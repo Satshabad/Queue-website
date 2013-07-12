@@ -2,8 +2,8 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.controllers'])
-  .run(function ($rootScope) {
+angular.module('queue', ['queue.filters', 'queue.services', 'queue.directives', 'queue.controllers'])
+  .run(function (Facebook) {
     window.fbAsyncInit = function () {
       FB.init({
             appId:'580401268636769',
@@ -12,9 +12,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
             xfbml:true
       });
 
-      FB.Event.subscribe('auth.authResponseChange', function(response) {
-          $rootScope.$broadcast("facebookAuthChange", {'response': response});
-      });
+      Facebook.init(FB)
 
     };
 
