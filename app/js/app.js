@@ -1,8 +1,7 @@
 'use strict';
 
 
-// Declare app level module which depends on filters, and services
-angular.module('queue', ['queue.filters', 'queue.services', 'queue.directives', 'queue.controllers'])
+angular.module('queue', [])
   .run(function (Facebook) {
     window.fbAsyncInit = function () {
       FB.init({

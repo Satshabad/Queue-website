@@ -1,0 +1,34 @@
+{
+  "name": "queue-website",
+  "version": "0.0.0",
+  "description": "This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Satshabad/queue-website.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/Satshabad/queue-website/issues"
+  },
+  "devDependencies": {
+    "karma-script-launcher": "0.0.2",
+    "karma-chrome-launcher": "0.0.2",
+    "karma-firefox-launcher": "0.0.3",
+    "karma-requirejs": "0.0.2",
+    "karma-coffee-preprocessor": "0.0.2",
+    "karma-phantomjs-launcher": "0.0.2",
+    "karma": "~0.9.3",
+    "karma-coverage": "0.0.3",
+    "grunt": "~0.4.1",
+    "grunt-karma": "~0.4.5",
+    "grunt-contrib-watch": "~0.4.4"
+  }
+}
