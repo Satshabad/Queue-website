@@ -61,4 +61,11 @@ factory('User', function(Facebook, $q, $http, $rootScope) {
         "login"      :  login,
         "isLoggedIn" :  isLoggedIn
     }
+
+    function resolve(deferred, argument) {
+        $rootScope.safeApply(function() {
+            deferred.resolve(argument)
+        })
+    }
+
 });

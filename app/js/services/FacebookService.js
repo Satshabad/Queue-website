@@ -14,20 +14,32 @@ angular.module('queue').
         throw new Error("You must init this service first");
       }
 
-      var deferred = $q.defer()
+      var deferred = $q.defer();
 
       FB.login(function (response) {
-        $rootScope.$apply(function () {
+        $rootScope.safeApply(function () {
           if (response.status === 'connected') {
-            deferred.resolve(response.authResponse);
+
+            $rootScope.safeApply(function () { deferred.resolve(response.authResponse)});
           } else {
             deferred.reject("could not login");
           }
-        })
+        });
       });
 
       return deferred.promise;
 
+    }
+
+    function api(path) {
+      var deferred = $q.defer();
+
+      FB.api(path, function(response) {
+        $rootScope.safeApply(function () { deferred.resolve(response)});
+
+      });
+
+      return deferred.promise;
     }
 
     function getLoginStatus() {
@@ -35,17 +47,18 @@ angular.module('queue').
         throw new Error("You must init this service first");
       }
 
-      var deferred = $q.defer()
+      var deferred = $q.defer();
 
       FB.getLoginStatus(function (response) {
 
-        $rootScope.$apply(function () {
+        $rootScope.safeApply(function () {
           if (response.status === "connected"){
             response.loggedIn = true
           } else {
             response.loggedIn = false
           }
-          deferred.resolve(response)
+
+        $rootScope.safeApply(function () { deferred.resolve(response)});
         });
 
       });
@@ -57,8 +70,8 @@ angular.module('queue').
     return {
       init: init,
       getLoginStatus: getLoginStatus,
-      login: login
+      login: login,
+      api: api
       }
 
   });
-

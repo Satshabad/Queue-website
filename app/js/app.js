@@ -2,7 +2,7 @@
 
 
 angular.module('queue', [])
-  .run(function (Facebook) {
+  .run(function ($rootScope, Facebook) {
     window.fbAsyncInit = function () {
       FB.init({
             appId:'580401268636769',
@@ -14,6 +14,17 @@ angular.module('queue', [])
       Facebook.init(FB)
 
     };
+
+  $rootScope.safeApply = function(fn) {
+    var phase = this.$root.$$phase;
+    if(phase == '$apply' || phase == '$digest') {
+      if(fn && (typeof(fn) === 'function')) {
+        fn();
+      }
+    } else {
+      this.$apply(fn);
+    }
+  };
 
     (function (d) {
         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
