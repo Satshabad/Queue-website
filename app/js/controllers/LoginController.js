@@ -1,19 +1,35 @@
 'use strict';
 
-angular.module('queue').
-controller('LoginCtrl', ['$scope', 'User',
-    function($scope, User) {
+angular.module('queueapp').
+controller('LoginCtrl', ['$scope', 'User', 'Queue', 'Search', 'Listens',
+    function($scope, User, Queue, Search, Listens) {
 
         $scope.login = function() {
 
-            if (User.isLoggedIn()) {
+            if (false) {
                 console.log("You're already logged in!");
             } else {
+
 
                 User.login().then(function() {
 
                     console.log("Now you're logged in");
-                    console.log(User.getUser());
+
+                    Queue.getItems().then(function (items) {
+                        console.log(items);
+                    })
+
+                    Search.getTracks("Franz").then(function (results) {
+                        console.log(results);   
+                    })
+
+                    Search.getArtists("Franz").then(function (results) {
+                        console.log(results);   
+                    })
+
+                    Listens.getTracks().then(function (tracks) {
+                        console.log(tracks);
+                    })
 
                 }).
                 catch (function() {

@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('queue', [])
+angular.module('queueapp', ['ngResource'])
   .run(function ($rootScope, Facebook) {
     window.fbAsyncInit = function () {
       FB.init({

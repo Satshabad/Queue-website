@@ -1,7 +1,7 @@
 'use scrict'; 
   
   // The Facebook service. It's a thin wrapper on the FB library
-angular.module('queue').
+angular.module('queueapp').
   factory('Facebook', function ($q, $rootScope) {
     var FB;
 

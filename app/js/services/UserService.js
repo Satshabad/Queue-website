@@ -2,10 +2,10 @@
 
 /* Services */
 
-angular.module('queue').
+angular.module('queueapp').
 
 // The service for all user interactions
-factory('User', function(Facebook, $q, $http, $rootScope) {
+factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
     var user = {};
 
     function isLoggedIn() {
@@ -16,7 +16,7 @@ factory('User', function(Facebook, $q, $http, $rootScope) {
         return Facebook.getLoginStatus().then(function(loginStatus) {
 
             user.accessToken = loginStatus.authResponse.accessToken;
-            user.id = loginStatus.authResponse.userID
+            user.facebookID = loginStatus.authResponse.userID
 
             var tryToGetMe = Facebook.api('/me'),
                 tryToGetPic = Facebook.api('/me/picture');
@@ -33,7 +33,7 @@ factory('User', function(Facebook, $q, $http, $rootScope) {
 
             var postParams = {
                 "accessToken" :  user.accessToken,
-                "fbId"        :  user.id,
+                "fbId"        :  user.facebookID,
                 "fullName"    :  user.fullName,
                 "imageLink"   :  user.picture
             };
@@ -41,6 +41,7 @@ factory('User', function(Facebook, $q, $http, $rootScope) {
             return $http.post('http://localhost:8000/login', postParams)
 
         }).then(function(response) {
+            user.id = response.data.userID
             user.isLoggedIn = true;
         }).
         catch (function(reason) {
@@ -57,8 +58,8 @@ factory('User', function(Facebook, $q, $http, $rootScope) {
     // The external API. Only functions so that we
     // can update internally after injection
     return {
-        "getUser"    :  getUser,
-        "login"      :  login,
-        "isLoggedIn" :  isLoggedIn
+        "getUser"      :  getUser,
+        "login"        :  login,
+        "isLoggedIn"   :  isLoggedIn
     }
 });
