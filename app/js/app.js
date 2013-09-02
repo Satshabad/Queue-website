@@ -1,33 +1,44 @@
 'use strict';
 
 
-angular.module('queueapp', ['ngResource'])
-  .run(function ($rootScope, Facebook) {
-    window.fbAsyncInit = function () {
-      FB.init({
-            appId:'580401268636769',
-            status:true,
-            cookie:true,
-            xfbml:true
-      });
+var app = angular.module('queueapp', ['ngResource', 'ngRoute'])
 
-      Facebook.init(FB)
+app.config(function($routeProvider) {
+    $routeProvider.when('/queue', {
+        templateUrl: 'partials/queue.html'
+    })
+})
+
+app.run(function($rootScope, Facebook, User) {
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '580401268636769',
+            status: true,
+            cookie: true,
+            xfbml: true
+        });
+
+        Facebook.init(FB)
+        User.login().then(function() {
+            $rootScope.safeApply(function() {})
+        })
 
     };
 
-  $rootScope.safeApply = function(fn) {
-    var phase = this.$root.$$phase;
-    if(phase == '$apply' || phase == '$digest') {
-      if(fn && (typeof(fn) === 'function')) {
-        fn();
-      }
-    } else {
-      this.$apply(fn);
-    }
-  };
+    $rootScope.safeApply = function(fn) {
+        var phase = this.$root.$$phase;
+        if (phase == '$apply' || phase == '$digest') {
+            if (fn && (typeof(fn) === 'function')) {
+                fn();
+            }
+        } else {
+            this.$apply(fn);
+        }
+    };
 
-    (function (d) {
-        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    (function(d) {
+        var js, id = 'facebook-jssdk',
+            ref = d.getElementsByTagName('script')[0];
         if (d.getElementById(id)) {
             return;
         }

@@ -8,10 +8,6 @@ angular.module('queueapp').
 factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
     var user = {};
 
-    function isLoggedIn() {
-        return user.isLoggedIn || false;
-    }
-
     function login() {
         return Facebook.getLoginStatus().then(function(loginStatus) {
 
@@ -42,10 +38,10 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
 
         }).then(function(response) {
             user.id = response.data.userID
-            user.isLoggedIn = true;
+            $rootScope.$broadcast('login')
         }).
         catch (function(reason) {
-            // TODO: handle different errors here 
+            // TODO: handle different errors here
             throw reason
         })
 
@@ -60,6 +56,5 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
     return {
         "getUser"      :  getUser,
         "login"        :  login,
-        "isLoggedIn"   :  isLoggedIn
     }
 });

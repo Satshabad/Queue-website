@@ -5,7 +5,7 @@ factory('Queue', function($resource, User) {
 
     var Queue = $resource('http://localhost:8000/user/:userId/queue/:id', {
         id: '@id',
-        userId: getUserId
+        userId: findUserId
     }, {
         query: {
             isArray: true,
@@ -20,7 +20,7 @@ factory('Queue', function($resource, User) {
         return Queue.query().$promise
     }
 
-    function getUserId() {
+    function findUserId() {
         var id = User.getUser().id;
 
         if (id === undefined) {
