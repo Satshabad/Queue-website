@@ -12,7 +12,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="span8">The details page of {{currentItemIndex}}</div>
+            <div class="span8">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <img ng-src="{{queue[currentItemIndex].song.images.extraLarge}}" alt="" />
+                    </div>
+                    <div class="span9">
+                        <h3>{{queue[currentItemIndex].song.name}}</h3>
+                        <h4>{{queue[currentItemIndex].song.artist.name}}</h4>
+                        <p>Added on {{queue[currentItemIndex].dateQueued | date }}
+                        by {{queue[currentItemIndex].fromUser.fullName }}<p>
+                    </div>
+
         </div>
     </div>
 </div>
