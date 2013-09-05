@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+/* (C) Copyright 2013 - Queue */
+/* Main Stylesheet */
+
+body {
+  margin: 0px;
+}
+
+/* Main Layout */
+#topNav {
+  color: white;
+  vertical-align: middle;
+  font-size: 25px;
+  font-family: helvetica;
+  height: 26px;
+  padding: 10px 15px;
+
+  /* Gradient */
+  background: #191919; /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191919', endColorstr='#2f2f2f'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#191919), to(#2f2f2f)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #191919,  #2f2f2f); /* for firefox 3.6+ */
+}
+
+#listView {
+  position: relative;
+  float: left;
+  width: 30%;
+  height: 1050px;
+  border-right: 1px solid #c5c5c4;
+}
+
+#detailView {
+  position: relative;
+  overflow: hidden;
+  height: 1000px;
+  padding: 25px;
+  background-color: #f7f7f5;
+  font-size: 25px;
+}
+
+/* Interior Elements */
+#detailView img{
+  float: left;
+  margin-right: 25px;
+}
+
+#listView .listItem {
+  height: 60px;
+  padding: 8px;
+  font-family: helvetica;
+}   
+
+#listView .listItem.selected {
+  position: relative;
+  z-index: 100;
+  width: 102%;
+  border: 1px solid #c5c5c4;
+  background-color: #ffffff;
+}
+
+#listView .listItem img{
+  float: left;
+  margin-right: 8px;
+}
+
+#listView div:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+#listView div:nth-child(even) {
+  background-color: #f7f7f5;
+}
