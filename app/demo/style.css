@@ -3,16 +3,21 @@
 /* (C) Copyright 2013 - Queue */
 /* Main Stylesheet */
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
+  height: 100%;
   margin: 0px;
 }
 
 /* Main Layout */
 #topNav {
   color: white;
-  vertical-align: middle;
   font-size: 25px;
-  font-family: helvetica;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   height: 26px;
   padding: 10px 15px;
 
@@ -27,22 +32,23 @@ body {
   position: relative;
   float: left;
   width: 30%;
-  height: 1050px;
+  height: 100%;
   border-right: 1px solid #c5c5c4;
 }
 
 #detailView {
   position: relative;
   overflow: hidden;
-  height: 1000px;
+  height: 100%;
   padding: 25px;
   background-color: #f7f7f5;
   font-size: 25px;
-  font-family: helvetica;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 /* Interior Elements */
-#detailView img{
+#detailView img {
+  width: 250px;
   float: left;
   margin-right: 25px;
 }
@@ -50,7 +56,7 @@ body {
 #listView .listItem {
   height: 60px;
   padding: 8px;
-  font-family: helvetica;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }   
 
 #listView .listItem.selected {
@@ -60,7 +66,8 @@ body {
   border: 1px solid #c5c5c4;
 }
 
-#listView .listItem img{
+#listView .listItem img {
+  width: 60px;
   float: left;
   margin-right: 8px;
 }
