@@ -6,3 +6,8 @@ coverage
 *.swp
 *.swo
 *.swn
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/*/.DS_Store

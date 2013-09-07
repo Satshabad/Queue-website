@@ -1,29 +1,18 @@
-<div ng-controller="QueueViewCtrl">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span4">
-                <div class="well">
-                    <ul>
-                        <li class="nav-header">Queue</li>
-                        <input ng-model="query" type="text" class="search-query" placeholder="Filter">
-                        <li ng-click="changeCurrentItem({{$index}})" ng-repeat="item in queue | filter:query">{{item.song.name}} by {{item.song.artist.name}}
-                            <p>Add by {{item.fromUser.fullName}}</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="span8">
-                <div class="row-fluid">
-                    <div class="span3">
-                        <img ng-src="{{queue[currentItemIndex].song.images.extraLarge}}" alt="" />
-                    </div>
-                    <div class="span9">
-                        <h3>{{queue[currentItemIndex].song.name}}</h3>
-                        <h4>{{queue[currentItemIndex].song.artist.name}}</h4>
-                        <p>Added on {{queue[currentItemIndex].dateQueued | date }}
-                        by {{queue[currentItemIndex].fromUser.fullName }}<p>
-                    </div>
+<!-- (C) Copyright 2013 - Queue -->
+<!-- Queue Partial -->
 
-        </div>
-    </div>
+<div id="listView">
+    <list-item></list-item>                             
+    <list-item></list-item>                             
+    <list-item></list-item>                             
+    <list-item></list-item>                             
+    <list-item></list-item>                             
+    <list-item></list-item>                           	
+</div>
+<div id="detailView">
+	<img src="http://upload.wikimedia.org/wikipedia/en/thumb/b/b8/Gold-on-the-ceiling.jpg/220px-Gold-on-the-ceiling.jpg" />
+    <table class="info">
+        <tr class="title"><td>Gold on the Ceiling</td></tr>
+        <tr class="subTitle"><td>The Black Keys</td></tr>
+    </table>
 </div>
