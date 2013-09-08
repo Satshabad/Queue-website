@@ -18,27 +18,35 @@ body {
 
 /* Top Navigation */
 #topNav {
-  height: 34px;
-  padding: 7px;
+  height: 48px;
 
   /* Gradient */
   background: #191919; /* for non-css3 browsers */
+  background: #2c2c2d; /* Spotify color test */
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191919', endColorstr='#2f2f2f'); /* for IE */*/
   /*background: -webkit-gradient(linear, left top, left bottom, from(#191919), to(#2f2f2f)); /* for webkit browsers */*/
   /*background: -moz-linear-gradient(top,  #191919,  #2f2f2f); /* for firefox 3.6+ */*/
 }
 
-#topNav #logo {
+#topNav #logo img {
   width: 34px;
   float: left;
-  margin-right: 12px;
+  padding: 7px;
 }
 
-#topNav div {
+#topNav #logo div {
   float: left;
-  padding-top: 3px;
+  padding: 10px 20px 7px 0px;
+  border-right: 1px solid #1f1f1f;
   color: white;
   font-size: 25px;
+}
+
+#topNav #navContent {
+  float: left;
+  height: 34px;
+  padding: 7px;
+  border-left: 1px solid #3b3b3c;
 }
 
 /* List View */
@@ -93,7 +101,7 @@ body {
 /* List View Login Overlay */
 .overlay {
   /* UNCOMMENT this line to show normal listView */
-  /*display: none;*/
+  display: none;
 
   background: rgb(255, 255, 255);
   background: rgba(255, 255, 255, 0.75);
