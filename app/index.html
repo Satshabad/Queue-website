@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <title>Queue</title>
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-resource.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.js"></script>
@@ -25,10 +25,10 @@
     
     <body>
         <div id="topNav">
-            <span>Queue</span>
-            <span id="fb-root" ng-controller="LoginCtrl">
-                <button ng-click="login()">Login</button>
-            </span>
+            <a href="/index.html#/queue">
+                <img id="logo" src="img/logo-114px.png" />
+                <div>Queue</div>
+            </a>
         </div>
 
         <ng-view></ng-view>

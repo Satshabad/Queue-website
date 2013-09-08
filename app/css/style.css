@@ -9,28 +9,39 @@ html, body {
 
 html {
   overflow: hidden;
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
 }
 
 body {
   margin: 0;
 }
 
-/* Main Layout */
+/* Top Navigation */
 #topNav {
-  color: white;
-  font-size: 25px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  height: 3%;
-  min-height: 26px;
-  padding: 10px 15px;
+  height: 34px;
+  padding: 7px;
 
   /* Gradient */
   background: #191919; /* for non-css3 browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191919', endColorstr='#2f2f2f'); /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#191919), to(#2f2f2f)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #191919,  #2f2f2f); /* for firefox 3.6+ */
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191919', endColorstr='#2f2f2f'); /* for IE */*/
+  /*background: -webkit-gradient(linear, left top, left bottom, from(#191919), to(#2f2f2f)); /* for webkit browsers */*/
+  /*background: -moz-linear-gradient(top,  #191919,  #2f2f2f); /* for firefox 3.6+ */*/
 }
 
+#topNav #logo {
+  width: 34px;
+  float: left;
+  margin-right: 12px;
+}
+
+#topNav div {
+  float: left;
+  padding-top: 3px;
+  color: white;
+  font-size: 25px;
+}
+
+/* List View */
 #listView {
   position: relative;
   float: left;
@@ -39,27 +50,31 @@ body {
   border-right: 1px solid #c5c5c4;
 }
 
-#detailView {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  padding: 25px;
-  background-color: #f7f7f5;
-  font-size: 25px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
-/* Interior Elements */
-#detailView img {
-  width: 250px;
-  float: left;
-  margin-right: 25px;
-}
-
 #listView .listItem {
   padding: 8px;
   overflow: hidden;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  cursor: pointer;
+
+  /* Fading transition for background */
+  -webkit-transition: background 0.2s ease-in-out;
+  -moz-transition: background 0.2s ease-in-out;
+  -ms-transition: background 0.2s ease-in-out;
+  -o-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+}
+
+#listView .listItem:nth-child(odd),
+#listView .listItem:nth-child(odd).selected:hover {
+  background-color: #ffffff;
+}
+
+#listView .listItem:nth-child(even),
+#listView .listItem:nth-child(even).selected:hover {
+  background-color: #f7f7f5;
+} 
+
+#listView .listItem:hover {
+  background-color: #e6e6df;
 }   
 
 #listView .listItem.selected {
@@ -75,10 +90,85 @@ body {
   margin-right: 8px;
 }
 
-#listView .listItem:nth-child(odd) {
-  background-color: #ffffff;
+/* List View Login Overlay */
+.overlay {
+  /*display: none; - UNCOMMENT this line to show normal listView */
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  /* Fading transition for background */
+  -webkit-transition: background 0.2s ease-in-out;
+  -moz-transition: background 0.2s ease-in-out;
+  -ms-transition: background 0.2s ease-in-out;
+  -o-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
-#listView .listItem:nth-child(even) {
+.overlay:hover {
+  background-color: white;
+}
+
+.overlay #fb-root {
+  box-sizing: border-box;
+
+  /* Center the div */
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  height: 176px;
+  width: 80%;
+  margin-top: -88px;   /* Half the height */
+  margin-left: -40%;  /* Half the width */
+  
+  padding: 15px;
   background-color: #f7f7f5;
+  border: 1px solid #c5c5c4;
+  -moz-box-shadow: 0 0 8px 0.5px #c5c5c4;
+  -webkit-box-shadow: 0 0 8px 0.5px #c5c5c4;
+  box-shadow: 0 0 8px 0.5px #c5c5c4;
+  font-size: 15px;
+  text-align: center;
+}
+
+.overlay #fb-root #loginButton {
+  position: absolute;
+  left: 50%;
+  width: 60%;
+  margin-left: -30%;  /* Half the width */
+  cursor: pointer;
+}
+
+/* Detail View */
+#detailView {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 25px;
+  background-color: #f7f7f5;
+  font-size: 25px;
+}
+
+#detailView img {
+  width: 250px;
+  float: left;
+  margin-right: 25px;
+
+  /* Fading transition for image */
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+#detailView img:hover {
+  width: 300px;
 }
