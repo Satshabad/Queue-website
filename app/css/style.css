@@ -92,7 +92,9 @@ body {
 
 /* List View Login Overlay */
 .overlay {
-  /*display: none; - UNCOMMENT this line to show normal listView */
+  /* UNCOMMENT this line to show normal listView */
+  /*display: none;*/
+
   background: rgb(255, 255, 255);
   background: rgba(255, 255, 255, 0.75);
   z-index: 20;
@@ -103,22 +105,9 @@ body {
   position: absolute;
   top: 0px;
   left: 0px;
-
-  /* Fading transition for background */
-  -webkit-transition: background 0.2s ease-in-out;
-  -moz-transition: background 0.2s ease-in-out;
-  -ms-transition: background 0.2s ease-in-out;
-  -o-transition: background 0.2s ease-in-out;
-  transition: background 0.2s ease-in-out;
-}
-
-.overlay:hover {
-  background-color: white;
 }
 
 .overlay #fb-root {
-  box-sizing: border-box;
-
   /* Center the div */
   position: absolute;
   top: 40%;
@@ -127,8 +116,9 @@ body {
   width: 80%;
   margin-top: -88px;   /* Half the height */
   margin-left: -40%;  /* Half the width */
-  
-  padding: 15px;
+
+  box-sizing: border-box;
+  padding: 10px 15px 15px;
   background-color: #f7f7f5;
   border: 1px solid #c5c5c4;
   -moz-box-shadow: 0 0 8px 0.5px #c5c5c4;
