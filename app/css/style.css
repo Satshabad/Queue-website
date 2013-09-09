@@ -22,7 +22,7 @@ body {
 
   /* Gradient */
   background: #191919; /* for non-css3 browsers */
-  background: #2c2c2d; /* Spotify color test */
+  background: #2c2c2d; /* Test Spotify color */
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191919', endColorstr='#2f2f2f'); /* for IE */*/
   /*background: -webkit-gradient(linear, left top, left bottom, from(#191919), to(#2f2f2f)); /* for webkit browsers */*/
   /*background: -moz-linear-gradient(top,  #191919,  #2f2f2f); /* for firefox 3.6+ */*/
@@ -43,10 +43,29 @@ body {
 }
 
 #topNav #navContent {
-  float: left;
+  position: relative;
+  overflow: hidden;
   height: 34px;
   padding: 7px;
   border-left: 1px solid #3b3b3c;
+}
+
+#topNav #navContent #searchForm {
+  width: 25%;
+  min-width: 170px;
+}
+
+#topNav #navContent #searchBar {
+  width: 100%;
+  height: 26px;
+  margin-top: 3px;
+  margin-left: 10px;
+  border-radius: 6px;
+  border: 0px none;
+}
+
+#topNav #navContent #searchBar:focus {
+  outline: none;
 }
 
 /* List View */

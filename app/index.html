@@ -1,6 +1,8 @@
 <!-- (C) Copyright 2013 - Queue -->
 <!-- Main Page -->
 
+<!-- TODO: Add noscript message "Javascript needs to be enabled to use the Queue web app" -->
+
 <!doctype html>
 <html lang="en" ng-app="queueapp">
 
@@ -29,7 +31,11 @@
                 <img src="img/logo-114px.png" />
                 <div>Queue</div>
             </a>
-            <div id="navContent">&nbsp;</div>
+            <div id="navContent">
+                <form id="searchForm">
+                    <input type="search" name="search" id="searchBar" placeholder="Search for Songs or Artists" tabindex="1" />
+                </form>
+            </div>
         </div>
 
         <ng-view></ng-view>
