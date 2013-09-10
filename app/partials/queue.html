@@ -12,7 +12,7 @@
 
     <div class="listItem" ng-repeat="item in queue" ng-click="changeCurrentItem($index)"
          ng-class="($index==currentItemIndex) ? 'selected' : ''">
-        <img ng-src="{{queue[currentItemIndex].song.images.large}}" />
+        <img ng-src="{{item.song.images.large}}" />
         <table class="info">
             <tr class="title">
                 <td>{{item.song.name}}</td>
