@@ -12,7 +12,7 @@
 
     <div class="listItem" ng-repeat="item in queue" ng-click="changeCurrentItem($index)"
          ng-class="($index==currentItemIndex) ? 'selected' : ''">
-        <img ng-src="{{item.song.images.large}}" />
+        <img ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
         <table class="info">
             <tr class="title">
                 <td>{{item.song.name}}</td>
@@ -24,13 +24,13 @@
     </div>
 </div>
 <div id="detailView">
-    <img src="http://cdn.gorillaz.com/the-fall/img/the_fall.jpg" />
+    <img ng-src="{{currentItem.song.images.extraLarge}}" />
     <table class="info">
         <tr class="title">
-            <td>The Parish of Space Dust</td>
+            <td>{{currentItem.song.name}}</td>
         </tr>
         <tr class="subTitle">
-            <td>Gorillaz</td>
+            <td>{{currentItem.song.artist.name}}</td>
         </tr>
     </table>
 </div>
