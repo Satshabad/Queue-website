@@ -38,10 +38,11 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
 
         }).then(function(response) {
             user.id = response.data.userID
+            console.log("broadcasting login");
             $rootScope.$broadcast('login')
         }).
         catch (function(reason) {
-            // TODO: handle different errors here
+            console.log("there was an error!");
             throw reason
         })
 

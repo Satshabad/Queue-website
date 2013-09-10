@@ -16,17 +16,17 @@ controller('LoginCtrl', ['$scope', 'User', 'Queue', 'Search', 'Listens',
                     console.log(items);
                 })
 
-                Search.getTracks("Franz").then(function(results) {
-                    console.log(results);
-                })
+                // Search.getTracks("Franz").then(function(results) {
+                //     console.log(results);
+                // })
 
-                Search.getArtists("Franz").then(function(results) {
-                    console.log(results);
-                })
+                // Search.getArtists("Franz").then(function(results) {
+                //     console.log(results);
+                // })
 
-                Listens.getTracks().then(function(tracks) {
-                    console.log(tracks);
-                })
+                // Listens.getTracks().then(function(tracks) {
+                //     console.log(tracks);
+                // })
 
             }).
             catch (function() {

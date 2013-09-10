@@ -1,24 +1,36 @@
 <!-- (C) Copyright 2013 - Queue -->
 <!-- Queue Partial -->
-
 <div id="listView">
     <div class="overlay">
         <div id="fb-root" ng-controller="LoginCtrl">
-            <p>You are not currently logged in.</p><p>To claim your Queue, login with Facebook below:</p>
-            <img id="loginButton" src="img/fb-loginbutton.png" ng-click="login()" />
+            <p>You are not currently logged in.</p>
+            <p>To claim your Queue, login with Facebook below:</p>
+            <img id="loginButton" src="img/fb-loginbutton.png"
+            ng-click="login()" />
         </div>
     </div>
-    <list-item></list-item>                             
-    <list-item></list-item>                             
-    <list-item></list-item>                             
-    <list-item></list-item>                             
-    <list-item></list-item>                             
-    <list-item></list-item>                           	
+
+    <div class="listItem" ng-repeat="item in queue" ng-click="changeCurrentItem($index)"
+         ng-class="($index==currentItemIndex) ? 'selected' : ''">
+        <img ng-src="{{queue[currentItemIndex].song.images.large}}" />
+        <table class="info">
+            <tr class="title">
+                <td>{{item.song.name}}</td>
+            </tr>
+            <tr class="subTitle">
+                <td>{{item.song.artist.name}}</td>
+            </tr>
+        </table>
+    </div>
 </div>
 <div id="detailView">
-	<img src="http://cdn.gorillaz.com/the-fall/img/the_fall.jpg" />
+    <img src="http://cdn.gorillaz.com/the-fall/img/the_fall.jpg" />
     <table class="info">
-        <tr class="title"><td>The Parish of Space Dust</td></tr>
-        <tr class="subTitle"><td>Gorillaz</td></tr>
+        <tr class="title">
+            <td>The Parish of Space Dust</td>
+        </tr>
+        <tr class="subTitle">
+            <td>Gorillaz</td>
+        </tr>
     </table>
 </div>
