@@ -25,9 +25,9 @@ body {
   /* Gradient */
   background: #191919; /* for non-css3 browsers */
   background: #2c2c2d; /* Test Spotify color */
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191919', endColorstr='#2f2f2f'); /* for IE */*/
-  /*background: -webkit-gradient(linear, left top, left bottom, from(#191919), to(#2f2f2f)); /* for webkit browsers */*/
-  /*background: -moz-linear-gradient(top,  #191919,  #2f2f2f); /* for firefox 3.6+ */*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2f2f2f', endColorstr='#191919'); /* for IE */*/
+  /*background: -webkit-gradient(linear, left top, left bottom, from(#2f2f2f), to(#191919)); /* for webkit browsers */*/
+  /*background: -moz-linear-gradient(top,  #2f2f2f,  #191919); /* for firefox 3.6+ */*/
 }
 
 #topNav #navLogo img {
@@ -132,6 +132,7 @@ body {
   /* UNCOMMENT this line to show normal listView */
   display: none;
 
+  position: absolute;
   background: rgb(255, 255, 255);
   background: rgba(255, 255, 255, 0.75);
   z-index: 20;
@@ -139,7 +140,6 @@ body {
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  position: absolute;
   top: 0px;
   left: 0px;
 }
