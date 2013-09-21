@@ -78,6 +78,15 @@ body {
   outline: none;
 }
 
+/* List/Detail View */
+.info {
+  float: left;
+}
+
+.info .title {
+  font-weight: bold;
+}
+
 /* List View */
 #listView {
   position: relative;
@@ -89,9 +98,9 @@ body {
 }
 
 #listView .listItem {
-  padding: 8px;
-  overflow: hidden;
+  height: 80px;
   cursor: pointer;
+  overflow: hidden;
 
   /* Fading transition for background */
   -webkit-transition: background 0.2s ease-in-out;
@@ -99,6 +108,8 @@ body {
   -ms-transition: background 0.2s ease-in-out;
   -o-transition: background 0.2s ease-in-out;
   transition: background 0.2s ease-in-out;
+
+  font-size: 18px;
 }
 
 #listView .listItem:nth-child(odd),
@@ -122,10 +133,22 @@ body {
   border: 1px solid #c5c5c4;
 }
 
-#listView .listItem img {
-  width: 60px;
+#listView .listItem .image {
   float: left;
-  margin-right: 8px;
+  height: 100%;
+}
+
+#listView .listItem .info {
+  padding: 10px;
+}
+
+#listView .listItem .info .title,
+#listView .listItem .info .subTitle {
+  margin-bottom: 6px;
+}
+
+#listView .listItem .info .subTitle {
+  font-size: 17px;
 }
 
 /* List View Login Overlay */
@@ -184,8 +207,20 @@ body {
   font-size: 25px;
 }
 
-#detailView img {
-  width: 275px;
+#detailView .image {
   float: left;
-  margin-right: 25px;
+  width: 275px;
+}
+
+#detailView .info {
+  padding-left: 25px;
+}
+
+#detailView .info .title,
+#detailView .info .subTitle {
+  margin-bottom: 8px;
+}
+
+#detailView .info .subTitle {
+  font-size: 22px;
 }

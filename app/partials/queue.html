@@ -12,25 +12,17 @@
 
     <div class="listItem" ng-repeat="item in queue" ng-click="changeCurrentItem($index)"
          ng-class="($index==currentItemIndex) ? 'selected' : ''">
-        <img ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
-        <table class="info">
-            <tr class="title">
-                <td>{{item.song.name}}</td>
-            </tr>
-            <tr class="subTitle">
-                <td>{{item.song.artist.name}}</td>
-            </tr>
-        </table>
+        <img class="image" ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
+        <div class="info">
+            <div class="title">{{item.song.name}}</div>
+            <div class="subTitle">{{item.song.artist.name}}</div>
+        </div>
     </div>
 </div>
 <div id="detailView">
-    <img ng-src="{{currentItem.song.images.extraLarge}}" />
-    <table class="info">
-        <tr class="title">
-            <td>{{currentItem.song.name}}</td>
-        </tr>
-        <tr class="subTitle">
-            <td>{{currentItem.song.artist.name}}</td>
-        </tr>
-    </table>
+    <img class="image" ng-src="{{currentItem.song.images.extraLarge}}" />
+    <div class="info">
+        <div class="title">{{currentItem.song.name}}</div>
+        <div class="subTitle">{{currentItem.song.artist.name}}</div>
+    </div>
 </div>
