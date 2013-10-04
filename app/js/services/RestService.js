@@ -19,16 +19,16 @@ factory('Queue', function($resource, User) {
     function addItem(itemData) {
         delete itemData.itemId;
         var item = new Queue(itemData);
-        return item.$save().$promise;
+        return item.$save()
     }
 
     function saveItem(item) {
         item.saved = 1;
-        return item.$save().$promise;
+        return item.$save();
     }
 
     function deleteItem(item) {
-        return item.$remove().$promise;
+        return item.$remove();
     }
 
     function getItems() {
@@ -73,11 +73,11 @@ factory('Saved', function($resource, User) {
     });
 
     function getItems() {
-        return Saved.query().$promise
+        return Saved.query();
     }
 
     function deleteItem(item) {
-        item.$remove().$promise;
+        item.$remove();
     }
 
     function _findUserId() {
