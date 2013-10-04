@@ -36,7 +36,6 @@ factory('Queue', function($resource, User) {
         return id;
     }
 
-
     return {
         "addItem"  :  addItem,
         "getItems" :  getItems
@@ -76,7 +75,6 @@ factory('Saved', function($resource, User) {
         return id;
     }
 
-
     return {
         "getItems" :  getItems
     }
@@ -114,7 +112,6 @@ factory('Sent', function($resource, User) {
 
         return id;
     }
-
 
     return {
         "getItems" :  getItems
