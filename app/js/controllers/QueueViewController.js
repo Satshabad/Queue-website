@@ -11,6 +11,10 @@ controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue',
             $scope.currentItem = $scope.queue[index];
         }
 
+        $scope.addItemToQueue = function (item) {
+            Queue.addItem(item)
+        };
+
         $rootScope.$on('login', function() {
             Queue.getItems().then(function(items) {
                 $scope.queue = items;

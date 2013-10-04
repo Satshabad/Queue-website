@@ -10,8 +10,9 @@
         </div>
     </div>
 
-    <div class="listItem" ng-repeat="item in queue" ng-click="changeCurrentItem($index)"
-         ng-class="($index==currentItemIndex) ? 'selected' : ''">
+    <div class="listItem" ng-repeat="item in queue"
+                          ng-click="changeCurrentItem($index)"
+                          ng-class="($index==currentItemIndex) ? 'selected' : ''">
         <img class="image" ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
         <div class="info">
             <div class="title">{{item.song.name}}</div>

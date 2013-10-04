@@ -3,7 +3,7 @@
 angular.module('queueapp').
 factory('Queue', function($resource, User) {
 
-    var Queue = $resource('http://localhost:8000/user/:userId/sent/:id', {
+    var Queue = $resource('http://localhost:8000/user/:userId/queue/:id', {
         id: '@id',
         userId: _findUserId
     }, {
@@ -15,6 +15,12 @@ factory('Queue', function($resource, User) {
             }
         }
     });
+
+    function addItem(itemData) {
+        delete itemData.itemId
+        var item = new Queue(itemData)
+        item.$save()
+    }
 
     function getItems() {
         return Queue.query().$promise
@@ -32,6 +38,7 @@ factory('Queue', function($resource, User) {
 
 
     return {
+        "addItem"  :  addItem,
         "getItems" :  getItems
     }
 
@@ -42,7 +49,7 @@ factory('Queue', function($resource, User) {
 angular.module('queueapp').
 factory('Saved', function($resource, User) {
 
-    var Saved = $resource('http://localhost:8000/user/:userId/sent/:id', {
+    var Saved = $resource('http://localhost:8000/user/:userId/saved/:id', {
         id: '@id',
         userId: _findUserId
     }, {
