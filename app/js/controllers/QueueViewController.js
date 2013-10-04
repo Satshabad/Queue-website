@@ -28,7 +28,7 @@ controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue', 'Saved',
         };
 
         $rootScope.$on('login', function() {
-            Saved.getItems().then(function(items) {
+            Queue.getItems().then(function(items) {
                 $scope.queue = items;
                 $scope.currentItemIndex = 0;
                 $scope.currentItem = $scope.queue[$scope.currentItemIndex];
