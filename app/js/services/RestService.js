@@ -3,8 +3,8 @@
 angular.module('queueapp').
 factory('Queue', function($resource, User) {
 
-    var Queue = $resource('http://localhost:8000/user/:userId/queue/:id', {
-        id: '@id',
+    var Queue = $resource('http://localhost:8000/user/:userId/queue/:itemId', {
+        itemId: '@itemId',
         userId: _findUserId
     }, {
         query: {
@@ -17,13 +17,22 @@ factory('Queue', function($resource, User) {
     });
 
     function addItem(itemData) {
-        delete itemData.itemId
-        var item = new Queue(itemData)
+        delete itemData.itemId;
+        var item = new Queue(itemData);
         item.$save()
     }
 
+    function saveItem(item) {
+        item.saved = 1;
+        item.$save();
+    }
+
+    function deleteItem(item) {
+        item.$remove();
+    }
+
     function getItems() {
-        return Queue.query().$promise
+        return Queue.query().$promise;
     }
 
     function _findUserId() {
@@ -37,8 +46,10 @@ factory('Queue', function($resource, User) {
     }
 
     return {
-        "addItem"  :  addItem,
-        "getItems" :  getItems
+        "deleteItem" :  deleteItem,
+        "saveItem"   :  saveItem,
+        "addItem"    :  addItem,
+        "getItems"   :  getItems
     }
 
 

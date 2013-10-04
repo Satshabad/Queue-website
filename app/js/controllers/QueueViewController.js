@@ -12,7 +12,16 @@ controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue',
         }
 
         $scope.addItemToQueue = function (item) {
-            Queue.addItem(item)
+            Queue.addItem(item);
+        };
+
+        $scope.saveQueueItem = function (item) {
+            Queue.saveItem(item);
+        };
+
+
+        $scope.deleteQueueItem = function (item) {
+            Queue.deleteItem(item);
         };
 
         $rootScope.$on('login', function() {
