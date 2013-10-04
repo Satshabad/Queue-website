@@ -19,16 +19,16 @@ factory('Queue', function($resource, User) {
     function addItem(itemData) {
         delete itemData.itemId;
         var item = new Queue(itemData);
-        item.$save()
+        return item.$save().$promise;
     }
 
     function saveItem(item) {
         item.saved = 1;
-        item.$save();
+        return item.$save().$promise;
     }
 
     function deleteItem(item) {
-        item.$remove();
+        return item.$remove().$promise;
     }
 
     function getItems() {
@@ -59,21 +59,25 @@ factory('Queue', function($resource, User) {
 angular.module('queueapp').
 factory('Saved', function($resource, User) {
 
-    var Saved = $resource('http://localhost:8000/user/:userId/saved/:id', {
-        id: '@id',
+    var Saved = $resource('http://localhost:8000/user/:userId/saved/:itemId', {
+        itemId: '@itemId',
         userId: _findUserId
     }, {
         query: {
             isArray: true,
             method: 'get',
             transformResponse: function(data, headers) {
-                return JSON.parse(data).Saved.items;
+                return JSON.parse(data).queue.items;
             }
         }
     });
 
     function getItems() {
         return Saved.query().$promise
+    }
+
+    function deleteItem(item) {
+        item.$remove().$promise;
     }
 
     function _findUserId() {
@@ -87,7 +91,8 @@ factory('Saved', function($resource, User) {
     }
 
     return {
-        "getItems" :  getItems
+        "deleteItem" :  deleteItem,
+        "getItems"   :  getItems
     }
 
 
@@ -97,15 +102,15 @@ factory('Saved', function($resource, User) {
 angular.module('queueapp').
 factory('Sent', function($resource, User) {
 
-    var Sent = $resource('http://localhost:8000/user/:userId/sent/:id', {
-        id: '@id',
+    var Sent = $resource('http://localhost:8000/user/:userId/sent/:itemId', {
+        itemId: '@itemId',
         userId: _findUserId
     }, {
         query: {
             isArray: true,
             method: 'get',
             transformResponse: function(data, headers) {
-                return JSON.parse(data).Sent.items;
+                return JSON.parse(data).queue.items;
             }
         }
     });
