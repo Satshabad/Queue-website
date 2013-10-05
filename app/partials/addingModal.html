@@ -1,1 +1,42 @@
-<div id="modalView">This</div>
+<div id="modalView" ng-controller="ShareViewCtrl">
+    <h3> Add a Song to you Queue</h3>
+
+    <div>
+        Recent Listens
+        <div  ng-repeat="item in listens"
+              ng-click="changeSelectedItem($index)"
+              ng-class="($index==selectedItemIndex) ? 'selected' : ''">
+
+            <img class="image" ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
+
+            <div>
+                <div class="title">{{item.song.name}}</div>
+                <div class="subTitle">{{item.song.artist.name}}</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div>
+        Search
+
+        <input ng-change="doSearch()" ng-model="searchTerm">
+        </input>
+
+        <div  ng-repeat="item in searchResults"
+              ng-click="changeSelectedItem($index)"
+              ng-class="($index==selectedItemIndex) ? 'selected' : ''">
+
+            <img class="image" ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
+
+            <div>
+                <div class="title">{{item.song.name}}</div>
+                <div class="subTitle">{{item.song.artist.name}}</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
