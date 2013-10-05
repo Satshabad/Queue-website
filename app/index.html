@@ -19,14 +19,17 @@
         <script src="js/services/RestService.js"></script>
         <script src="js/services/SearchService.js"></script>
         <script src="js/services/ListensService.js"></script>
-        <script src="js/controllers/LoginController.js"></script>
+        <script src="js/controllers/NavBarController.js"></script>
         <script src="js/controllers/ListViewControllers.js"></script>
         <script src="js/filters/filters.js"></script>
         <script src="js/directives/directives.js"></script>
+        <script src="lib/modal/modal.js"></script>
+
+
     </head>
 
     <body>
-        <div id="topNav">
+        <div id="topNav" ng-controller="NavBarCtrl">
             <a id="navLogo" href="/index.html#/queue">
                 <img src="img/logo-114px.png" />
                 <div>Queue</div>
@@ -39,6 +42,9 @@
                 <form id="searchForm">
                     <input type="search" name="search" id="searchBar" placeholder="Search for Songs or Artists" tabindex="1" />
                 </form>
+
+                <button ng-click="showAddView()" > Add </button>
+
             </div>
         </div>
 
