@@ -11,7 +11,7 @@ html, body {
 
 html {
   overflow: hidden;
-  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 body {
@@ -87,6 +87,10 @@ body {
   font-weight: bold;
 }
 
+.info .subTitle {
+  font-weight: normal;
+}
+
 /* List View */
 #listView {
   position: relative;
@@ -109,7 +113,7 @@ body {
   -o-transition: background 0.2s ease-in-out;
   transition: background 0.2s ease-in-out;
 
-  font-size: 18px;
+  font-size: 17px;
 }
 
 #listView .listItem:nth-child(odd),
@@ -148,7 +152,7 @@ body {
 }
 
 #listView .listItem .info .subTitle {
-  font-size: 17px;
+  font-size: 14px;
 }
 
 /* List View Login Overlay */
@@ -222,5 +226,9 @@ body {
 }
 
 #detailView .info .subTitle {
-  font-size: 22px;
+  font-size: 23px;
+}
+
+#detailView #links {
+  clear: both;
 }
