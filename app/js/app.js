@@ -5,7 +5,11 @@ var app = angular.module('queueapp', ['ngResource', 'ngRoute'])
 
 app.config(function($routeProvider) {
     $routeProvider.when('/queue', {
-        templateUrl: 'partials/queue.html'
+        templateUrl: 'partials/queue.html',
+    }).when('/saved', {
+        templateUrl: 'partials/saved.html',
+    }).when('/sent', {
+        templateUrl: 'partials/sent.html',
     })
 })
 

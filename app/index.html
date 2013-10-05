@@ -16,15 +16,15 @@
         <script src="js/app.js"></script>
         <script src="js/services/FacebookService.js"></script>
         <script src="js/services/UserService.js"></script>
-        <script src="js/services/QueueService.js"></script>
+        <script src="js/services/RestService.js"></script>
         <script src="js/services/SearchService.js"></script>
         <script src="js/services/ListensService.js"></script>
         <script src="js/controllers/LoginController.js"></script>
-        <script src="js/controllers/QueueViewController.js"></script>
+        <script src="js/controllers/ListViewControllers.js"></script>
         <script src="js/filters/filters.js"></script>
         <script src="js/directives/directives.js"></script>
     </head>
-    
+
     <body>
         <div id="topNav">
             <a id="navLogo" href="/index.html#/queue">
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <ng-view ng-controller="QueueViewCtrl"></ng-view>
+        <ng-view ng-controller="ListViewCtrl"></ng-view>
     </body>
 
 </html>
