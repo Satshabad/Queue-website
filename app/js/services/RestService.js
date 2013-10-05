@@ -95,8 +95,39 @@ factory('Sent', function($resource, User, ResourceFactory) {
 
     var Sent = ResourceFactory.initResource('sent')
 
+    function _areSimilar(item1, item2) {
+        return (item1.type === item2.type &&
+                item1[item1.type].name === item2[item2.type].name &&
+                angular.equals(item1[item1.type].images, item2[item2.type].images))
+    }
+
     function getItems(page) {
-        return Sent.query({"page":page}).$promise;
+
+        return Sent.query({"page":page}).$promise.then(function (items) {
+
+            var collapsedItems = [];
+            for (var i = 0, l = items.length; i < l; i ++) {
+                var startItem = angular.copy(items[i])
+                startItem.toUsers = [startItem.toUser]
+                delete startItem.toUser
+
+                // If on last item, no more to collapse into it
+                if (i === l - 1){
+                    collapsedItems.push(startItem)
+                    break
+                }
+
+                while (_areSimilar(startItem, items[i+1])){
+                    startItem.toUsers.push(angular.copy(items[i+1].toUser))
+                    i++;
+                }
+                collapsedItems.push(startItem)
+            }
+            console.log(collapsedItems);
+            return collapsedItems
+
+        })
+
     }
 
     return {
