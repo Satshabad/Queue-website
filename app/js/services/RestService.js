@@ -103,7 +103,7 @@ factory('Sent', function($resource, User, ResourceFactory) {
 
     function getItems(page) {
 
-        return Sent.query({"page":page}).$promise.then(function (items) {
+        return Sent.query({"page": page, "size": 30}).$promise.then(function (items) {
 
             var collapsedItems = [];
             for (var i = 0, l = items.length; i < l; i ++) {
