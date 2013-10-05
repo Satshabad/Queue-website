@@ -8,8 +8,8 @@ controller('ListViewCtrl', ['$scope',
 ]);
 
 angular.module('queueapp').
-controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue', 'Facebook', 'User',
-    function($scope, $rootScope, Queue, Facebook, User) {
+controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue', 'User',
+    function($scope, $rootScope, Queue, User) {
 
         $scope.queue = []
         $scope.queue.busy = false
@@ -27,9 +27,6 @@ controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue', 'Facebook', 'User'
         } else {
 
             $rootScope.$on('login', function() {
-                Facebook.api("me/friends").then(function (result) {
-                    console.log(result);
-                })
 
                 Queue.getItems(0).then(function(items) {
 
@@ -88,8 +85,8 @@ controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue', 'Facebook', 'User'
 
 
 angular.module('queueapp').
-controller('SavedViewCtrl', ['$scope', '$rootScope', 'Saved', 'Facebook', 'User',
-    function($scope, $rootScope, Saved, Facebook, User) {
+controller('SavedViewCtrl', ['$scope', '$rootScope', 'Saved', 'User',
+    function($scope, $rootScope, Saved, User) {
 
         $scope.saved = []
         $scope.saved.busy = false
@@ -108,9 +105,6 @@ controller('SavedViewCtrl', ['$scope', '$rootScope', 'Saved', 'Facebook', 'User'
         } else {
 
             $rootScope.$on('login', function() {
-                Facebook.api("me/friends").then(function (result) {
-                    console.log(result);
-                })
 
                 Saved.getItems(0).then(function(items) {
 
@@ -148,6 +142,65 @@ controller('SavedViewCtrl', ['$scope', '$rootScope', 'Saved', 'Facebook', 'User'
 
                 $scope.saved.page++;
                 $scope.saved.busy = false
+            })
+        };
+
+    }
+]);
+
+
+angular.module('queueapp').
+controller('SentViewCtrl', ['$scope', '$rootScope', 'Sent', 'User',
+    function($scope, $rootScope, Sent, User) {
+
+        $scope.sent = []
+        $scope.sent.busy = false
+        $scope.sent.page = 0
+
+
+        if (User.isLoggedIn()) {
+
+            Sent.getItems(0).then(function(items) {
+
+                $scope.sent = items;
+                $scope.currentItemIndex = 0;
+                $scope.currentItem = $scope.sent[$scope.currentItemIndex];
+            })
+
+        } else {
+
+            $rootScope.$on('login', function() {
+
+                Sent.getItems(0).then(function(items) {
+
+                    $scope.sent = items;
+                    $scope.currentItemIndex = 0;
+                    $scope.currentItem = $scope.sent[$scope.currentItemIndex];
+                })
+            })
+
+        }
+
+        $scope.changeCurrentItem = function(index) {
+            $scope.currentItemIndex = index;
+            $scope.currentItem = $scope.queue[index];
+        }
+
+        $scope.loadMoreItems = function () {
+
+            if ($scope.sent.busy === true){
+                return
+            }
+
+            $scope.sent.busy = true
+            Sent.getItems($scope.sent.page + 1).then(function(items) {
+
+                for (var i = 0; i < items.length; i++) {
+                    $scope.sent.push(items[i]);
+                }
+
+                $scope.sent.page++;
+                $scope.sent.busy = false
             })
         };
 

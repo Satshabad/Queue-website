@@ -8,6 +8,8 @@ app.config(function($routeProvider) {
         templateUrl: 'partials/queue.html',
     }).when('/saved', {
         templateUrl: 'partials/saved.html',
+    }).when('/sent', {
+        templateUrl: 'partials/sent.html',
     })
 })
 
