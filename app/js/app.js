@@ -1,7 +1,7 @@
 'use strict';
 
 
-var app = angular.module('queueapp', ['ngResource', 'ngRoute'])
+var app = angular.module('queueapp', ['ngResource', 'ngRoute', 'ui.bootstrap.modal'])
 
 app.config(function($routeProvider) {
     $routeProvider.when('/queue', {
