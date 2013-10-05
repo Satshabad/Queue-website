@@ -7,6 +7,7 @@ angular.module('queueapp').
 // The service for all user interactions
 factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
     var user = {};
+    var isLoggedBool = false;
 
     function login() {
         return Facebook.getLoginStatus().then(function(loginStatus) {
@@ -38,24 +39,29 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
 
         }).then(function(response) {
             user.id = response.data.userID
-            console.log("broadcasting login");
-            $rootScope.$broadcast('login')
+            isLoggedBool = true;
+        $rootScope.$broadcast('login')
         }).
         catch (function(reason) {
             console.log("there was an error!");
-            throw reason
+            throw reason;
         })
 
     }
 
     function getUser() {
-        return user
+        return user;
+    }
+
+    function isLoggedIn() {
+        return isLoggedBool;
     }
 
     // The external API. Only functions so that we
     // can update internally after injection
     return {
-        "getUser"      :  getUser,
-        "login"        :  login,
+        "isLoggedIn" :  isLoggedIn,
+        "getUser"    :  getUser,
+        "login"      :  login,
     }
 });

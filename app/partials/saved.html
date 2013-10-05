@@ -1,6 +1,6 @@
 <!-- (C) Copyright 2013 - Queue -->
-<!-- Queue Partial -->
-<div ng-controller="QueueViewCtrl">
+
+<div ng-controller="SavedViewCtrl">
     <div id="listView" >
 
         <ng-include src="'partials/overlay.html'" > </ng-include>
@@ -11,7 +11,7 @@
             <a href="#/sent">Sent</a>
         </div>
 
-        <div class="listItem" ng-repeat="item in queue"
+        <div class="listItem" ng-repeat="item in saved"
                               ng-click="changeCurrentItem($index)"
                               ng-class="($index==currentItemIndex) ? 'selected' : ''">
 

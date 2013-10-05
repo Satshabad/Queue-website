@@ -1,5 +1,5 @@
-'use scrict'; 
-  
+'use scrict';
+
   // The Facebook service. It's a thin wrapper on the FB library
 angular.module('queueapp').
   factory('Facebook', function ($q, $rootScope) {
@@ -66,7 +66,7 @@ angular.module('queueapp').
       return deferred.promise
 
     }
-    
+
     return {
       init: init,
       getLoginStatus: getLoginStatus,
