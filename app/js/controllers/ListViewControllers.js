@@ -118,7 +118,7 @@ controller('SavedViewCtrl', ['$scope', '$rootScope', 'Saved', 'User',
 
         $scope.changeCurrentItem = function(index) {
             $scope.currentItemIndex = index;
-            $scope.currentItem = $scope.queue[index];
+            $scope.currentItem = $scope.saved[index];
         }
 
         $scope.deleteSavedItem = function (item, index) {
@@ -183,7 +183,7 @@ controller('SentViewCtrl', ['$scope', '$rootScope', 'Sent', 'User',
 
         $scope.changeCurrentItem = function(index) {
             $scope.currentItemIndex = index;
-            $scope.currentItem = $scope.queue[index];
+            $scope.currentItem = $scope.sent[index];
         }
 
         $scope.loadMoreItems = function () {

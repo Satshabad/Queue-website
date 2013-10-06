@@ -35,7 +35,7 @@
 
     <body>
         <div id="topNav" ng-controller="NavBarCtrl">
-            <a id="navLogo" href="/index.html#/queue">
+            <a id="navLogo" href="/#">
                 <img src="img/logo-114px.png" />
                 <div>Queue</div>
             </a>
@@ -44,7 +44,8 @@
                 <img src="img/gear-icon-20px.png"></img>
             </div>
             <div id="navContent">
-                <img id="addButton" src="img/plus-icon-20px.png" ng-click="showAddView()" />
+                <img id="addButton" src="img/plus-icon-20px.png" ng-click="showAddView()" ng-show="User.isLoggedIn"/>
+
             </div>
         </div>
 

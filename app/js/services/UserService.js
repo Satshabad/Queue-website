@@ -54,7 +54,13 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
     }
 
     function isLoggedIn() {
-        return isLoggedBool;
+        if (isLoggedBool){
+            return true
+        }
+
+        return Facebook.getLoginStatus().then(function (response) {
+            return response.loggedIn;
+        })
     }
 
     function setLastFMName(name) {

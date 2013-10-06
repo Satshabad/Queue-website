@@ -72,7 +72,6 @@ controller('ShareViewCtrl', ['$scope', 'Facebook', 'Sharing', '$q',
         $scope.selectedFriends = [];
 
         Facebook.api('me/friends').then(function (results) {
-            console.log(results.data);
             $scope.friends = results.data
         })
 

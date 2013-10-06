@@ -1,77 +1,116 @@
 'use scrict';
 
-  // The Facebook service. It's a thin wrapper on the FB library
+// The Facebook service. It's a thin wrapper on the FBAPI library
 angular.module('queueapp').
-  factory('Facebook', function ($q, $rootScope) {
-    var FB;
+factory('Facebook', function($q, $rootScope) {
+    var FBAPI;
 
     function init(facebookLibrary) {
-      FB = facebookLibrary;
+        if (FBAPI !== undefined) {
+            return $q.when()
+        }
+
+        var deferred = $q.defer();
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '580401268636769',
+                status: true,
+                cookie: true,
+                xfbml: true
+            });
+
+            FBAPI = FB;
+
+            $rootScope.safeApply(function() {
+                deferred.resolve()
+            });
+        };
+
+        (function(d) {
+            var js, id = 'facebook-jssdk',
+                ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+
+        return deferred.promise;
+
     }
 
-    function login(){
-      if (FB === undefined){
-        throw new Error("You must init this service first");
-      }
+    function login() {
+        return init().then(function() {
 
-      var deferred = $q.defer();
+            var deferred = $q.defer();
 
-      FB.login(function (response) {
-        $rootScope.safeApply(function () {
-          if (response.status === 'connected') {
+            FBAPI.login(function(response) {
+                $rootScope.safeApply(function() {
+                    if (response.status === 'connected') {
 
-            $rootScope.safeApply(function () { deferred.resolve(response.authResponse)});
-          } else {
-            deferred.reject("could not login");
-          }
-        });
-      });
+                        $rootScope.safeApply(function() {
+                            deferred.resolve(response.authResponse)
+                        });
+                    } else {
+                        deferred.reject("could not login");
+                    }
+                });
+            });
 
-      return deferred.promise;
+            return deferred.promise;
+        })
 
     }
 
     function api(path) {
-      var deferred = $q.defer();
+        return init().then(function() {
+            var deferred = $q.defer();
 
-      FB.api(path, function(response) {
-        $rootScope.safeApply(function () { deferred.resolve(response)});
+            FBAPI.api(path, function(response) {
+                $rootScope.safeApply(function() {
+                    deferred.resolve(response)
+                });
 
-      });
+            });
 
-      return deferred.promise;
+            return deferred.promise;
+        })
     }
 
     function getLoginStatus() {
-      if (FB === undefined){
-        throw new Error("You must init this service first");
-      }
+        return init().then(function() {
 
-      var deferred = $q.defer();
+            var deferred = $q.defer();
 
-      FB.getLoginStatus(function (response) {
+            FBAPI.getLoginStatus(function(response) {
 
-        $rootScope.safeApply(function () {
-          if (response.status === "connected"){
-            response.loggedIn = true
-          } else {
-            response.loggedIn = false
-          }
+                $rootScope.safeApply(function() {
+                    if (response.status === "connected") {
+                        response.loggedIn = true
+                    } else {
+                        response.loggedIn = false
+                    }
 
-        $rootScope.safeApply(function () { deferred.resolve(response)});
-        });
+                    $rootScope.safeApply(function() {
+                        deferred.resolve(response)
+                    });
+                });
 
-      });
+            });
 
-      return deferred.promise
+            return deferred.promise
+        })
 
     }
 
     return {
-      init: init,
-      getLoginStatus: getLoginStatus,
-      login: login,
-      api: api
-      }
+        getLoginStatus: getLoginStatus,
+        login: login,
+        api: api
+    }
 
-  });
+});

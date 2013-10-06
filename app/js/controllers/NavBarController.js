@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('queueapp').
-controller('NavBarCtrl', ['$scope', 'Search', 'Listens', '$modal',
-    function($scope, Search, Listens, $modal) {
+controller('NavBarCtrl', ['$scope', 'Search', 'Listens', '$modal', 'User',
+    function($scope, Search, Listens, $modal, User) {
+        $scope.isLoggedIn = User.isLoggedIn()
 
         $scope.$on('successShare',function () {
             $scope.modalInstance.close()

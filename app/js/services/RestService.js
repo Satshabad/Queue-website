@@ -128,7 +128,6 @@ factory('Sent', function($resource, User, ResourceFactory) {
                 }
                 collapsedItems.push(startItem)
             }
-            console.log(collapsedItems);
             return collapsedItems
 
         })
