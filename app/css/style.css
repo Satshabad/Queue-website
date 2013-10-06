@@ -236,3 +236,91 @@ body {
 #detailView #links {
   clear: both;
 }
+
+/* Modal Views */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000;
+}
+
+.modalBackdrop.fade {
+  opacity: 0;
+}
+
+.modalBackdrop,
+.modalBackdrop.fade.in {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1050;
+  width: 800px;
+  height: 600px;
+  margin-left: -400px;
+  margin-top: -300px;
+  background-color: #ffffff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  *border: 1px solid #999;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.modal.fade {
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.8s ease-in-out;
+     -moz-transition: all 0.8s ease-in-out;
+      -ms-transition: all 0.8s ease-in-out;
+       -o-transition: all 0.8s ease-in-out;
+          transition: all 0.8s ease-in-out;
+}
+
+.modal.fade.in {
+  width: 800px;
+  height: 600px;
+  margin-left: -400px;
+  margin-top: -300px;
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+/* Modal Add View */
+#modalAddView {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+#pickerView,
+#shareView {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#pickerView {
+  float:left;
+  width: 50%;
+}
+
+#shareView {
+}
