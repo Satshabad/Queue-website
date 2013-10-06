@@ -1,42 +1,28 @@
-<div id="modalView" ng-controller="ShareViewCtrl">
-    <h3> Add a Song to you Queue</h3>
-
-    <div>
-        Recent Listens
-        <div  ng-repeat="item in listens"
-              ng-click="changeSelectedItem($index)"
-              ng-class="($index==selectedItemIndex) ? 'selected' : ''">
-
+<div id="modalAddView" ng-controller="ModalAddViewCtrl">
+    <div id="pickerView" ng-controller="PickerViewCtrl">
+    	<h3>Pick a Song or Artist</h3>
+    	<div style="margin: 0px auto; overflow:hidden;">
+    		<div class="segmentedControl" ng-click="enableSearchMode()">Search</div>
+    		<div class="segmentedControl" ng-click="enableListensMode()">Recently Listened</div>
+    	</div>
+	    <input type="search" id="searchBar" placeholder="Search for Songs or Artists" tabindex="1" ng-change="doSearch()" ng-model="searchTerm" />
+        <div class="listItem" ng-repeat="item in listens" ng-click="changeSelectedItem($index)" ng-class="($index==selectedItemIndex) ? 'selected' : ''">
             <img class="image" ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
-
             <div>
                 <div class="title">{{item.song.name}}</div>
                 <div class="subTitle">{{item.song.artist.name}}</div>
             </div>
-
         </div>
-
-    </div>
-
-    <div>
-        Search
-
-        <input ng-change="doSearch()" ng-model="searchTerm">
-        </input>
-
-        <div  ng-repeat="item in searchResults"
-              ng-click="changeSelectedItem($index)"
-              ng-class="($index==selectedItemIndex) ? 'selected' : ''">
-
+        <div class="listItem" ng-repeat="item in searchResults" ng-click="changeSelectedItem($index)" ng-class="($index==selectedItemIndex) ? 'selected' : ''">
             <img class="image" ng-src="{{item.song.images.large || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}" />
-
             <div>
                 <div class="title">{{item.song.name}}</div>
                 <div class="subTitle">{{item.song.artist.name}}</div>
             </div>
-
         </div>
+	</div>
 
+    <div id="shareView" ng-controller="ShareViewCtrl">
+    	Fun Stuff
     </div>
-
 </div>
