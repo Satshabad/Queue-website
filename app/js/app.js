@@ -10,6 +10,8 @@ app.config(function($routeProvider) {
         templateUrl: 'partials/saved.html',
     }).when('/sent', {
         templateUrl: 'partials/sent.html',
+    }).when('/', {
+        templateUrl: 'partials/login.html',
     })
 })
 
@@ -23,9 +25,6 @@ app.run(function($rootScope, Facebook, User) {
         });
 
         Facebook.init(FB)
-        User.login().then(function() {
-            $rootScope.safeApply(function() {})
-        })
 
     };
 

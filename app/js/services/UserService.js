@@ -10,10 +10,10 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
     var isLoggedBool = false;
 
     function login() {
-        return Facebook.getLoginStatus().then(function(loginStatus) {
+        return Facebook.login().then(function(loginStatus) {
 
-            user.accessToken = loginStatus.authResponse.accessToken;
-            user.facebookID = loginStatus.authResponse.userID
+            user.accessToken = loginStatus.accessToken;
+            user.facebookID = loginStatus.userID
 
             var tryToGetMe = Facebook.api('/me'),
                 tryToGetPic = Facebook.api('/me/picture');
@@ -57,11 +57,17 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
         return isLoggedBool;
     }
 
+    function setLastFMName(name) {
+        user.lastFMUsername = name
+        return $http.put('http://localhost:8000/user/'+user.id.toString(), user)
+    }
+
     // The external API. Only functions so that we
     // can update internally after injection
     return {
-        "isLoggedIn" :  isLoggedIn,
-        "getUser"    :  getUser,
-        "login"      :  login,
+        "setLastFMName" :  setLastFMName,
+        "isLoggedIn"    :  isLoggedIn,
+        "getUser"       :  getUser,
+        "login"         :  login,
     }
 });

@@ -120,6 +120,11 @@ factory('Sent', function($resource, User, ResourceFactory) {
                 while (_areSimilar(startItem, items[i+1])){
                     startItem.toUsers.push(angular.copy(items[i+1].toUser))
                     i++;
+
+                    if (i === l - 1){
+                        break
+                    }
+
                 }
                 collapsedItems.push(startItem)
             }
