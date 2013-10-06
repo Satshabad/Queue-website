@@ -68,5 +68,12 @@ angular.module('queueapp').
 controller('ShareViewCtrl', ['$scope', 'Facebook',
     function($scope, Facebook) {
 
+        $scope.friends = [];
+        $scope.selectedFriends = [];
+
+        Facebook.api('me/friends').then(function (results) {
+            console.log(results.data);
+            $scope.friends = results.data
+        })
     }
 ])

@@ -26,5 +26,11 @@
         <h3> Sharing </h3>
         {{$parent.selectedItem.song.name}}
         <h3> With </h3>
+
+        <select chosen multiple id="states"
+            ng-model="selectedFriends"
+            ng-options="f.name for f in friends">
+        </select>
+
     </div>
 </div>
