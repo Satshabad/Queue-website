@@ -65,8 +65,8 @@ controller('PickerViewCtrl', ['$scope', 'Search', 'Listens', 'Facebook',
 
 
 angular.module('queueapp').
-controller('ShareViewCtrl', ['$scope', 'Facebook',
-    function($scope, Facebook) {
+controller('ShareViewCtrl', ['$scope', 'Facebook', 'Sharing',
+    function($scope, Facebook, Sharing) {
 
         $scope.friends = [];
         $scope.selectedFriends = [];
@@ -75,5 +75,11 @@ controller('ShareViewCtrl', ['$scope', 'Facebook',
             console.log(results.data);
             $scope.friends = results.data
         })
+
+        $scope.submit = function () {
+            for (var i = 0, l = $scope.selectedFriends.length; i < l; i ++) {
+                Sharing.shareByFbId($scope.selectedFriends[i].id, $scope.$parent.selectedItem)
+            }
+        };
     }
 ])
