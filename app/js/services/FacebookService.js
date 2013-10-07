@@ -89,11 +89,6 @@ factory('Facebook', function($q, $rootScope) {
             FBAPI.getLoginStatus(function(response) {
 
                 $rootScope.safeApply(function() {
-                    if (response.status === "connected") {
-                        response.loggedIn = true
-                    } else {
-                        response.loggedIn = false
-                    }
 
                     $rootScope.safeApply(function() {
                         deferred.resolve(response)

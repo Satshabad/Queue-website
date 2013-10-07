@@ -3,8 +3,11 @@ controller('LoginCtrl', ['$scope', 'User', '$location',
     function($scope, User, $location) {
 
         if (User.isLoggedIn()){
-            // uncomment this when you are tired of seeing the login page
-            // $location.path('/queue')
+            $location.path('/queue')
+        } else {
+            User.softLogin().then(function () {
+                $location.path('/queue')
+            })
         }
 
         $scope.login = function() {
