@@ -57,7 +57,6 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
     function softLogin() {
         return Facebook.getLoginStatus().then(function(response) {
             if (response.status === "connected") {
-                console.log("here");
 
                 user.accessToken = response.authResponse.accessToken;
                 user.facebookID = response.authResponse.userID

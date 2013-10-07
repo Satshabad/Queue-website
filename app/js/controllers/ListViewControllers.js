@@ -3,7 +3,9 @@
 angular.module('queueapp').
 controller('ListViewCtrl', ['$scope',
     function($scope) {
-
+        $scope.changeFilter = function (input) {
+            $scope.query = input;
+        };
     }
 ]);
 
@@ -15,26 +17,22 @@ controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue', 'User',
         $scope.queue.busy = false
         $scope.page = 0
 
-        if (User.isLoggedIn()) {
-
+        function _populateQueue(argument) {
             Queue.getItems(0).then(function(items) {
 
                 $scope.queue = items;
                 $scope.currentItemIndex = 0;
                 $scope.currentItem = $scope.queue[$scope.currentItemIndex];
             })
+        }
+
+        if (User.isLoggedIn()) {
+            _populateQueue()
 
         } else {
 
-            $rootScope.$on('login', function() {
-
-                Queue.getItems(0).then(function(items) {
-
-                    $scope.queue = items;
-                    $scope.currentItemIndex = 0;
-                    $scope.currentItem = $scope.queue[$scope.currentItemIndex];
-                })
-
+            User.softLogin().then(function() {
+                _populateQueue()
             })
 
         }
@@ -44,27 +42,27 @@ controller('QueueViewCtrl', ['$scope', '$rootScope', 'Queue', 'User',
             $scope.currentItem = $scope.queue[index];
         }
 
-        $scope.addItemToQueue = function (item) {
-            Queue.addItem(item).then(function () {
+        $scope.addItemToQueue = function(item) {
+            Queue.addItem(item).then(function() {
                 console.log("item added");
             })
         };
 
-        $scope.saveQueueItem = function (item) {
-            Queue.saveItem(item).then(function () {
+        $scope.saveQueueItem = function(item) {
+            Queue.saveItem(item).then(function() {
                 console.log("item saved");
             })
         };
 
-        $scope.deleteQueueItem = function (item, index) {
-            Queue.deleteItem(item).then(function () {
-                $scope.queue.splice(index,1);
+        $scope.deleteQueueItem = function(item, index) {
+            Queue.deleteItem(item).then(function() {
+                $scope.queue.splice(index, 1);
             })
         };
 
-        $scope.loadMoreItems = function () {
+        $scope.loadMoreItems = function() {
 
-            if ($scope.queue.busy === true){
+            if ($scope.queue.busy === true) {
                 return
             }
 
@@ -92,28 +90,23 @@ controller('SavedViewCtrl', ['$scope', '$rootScope', 'Saved', 'User',
         $scope.saved.busy = false
         $scope.saved.page = 0
 
-
-        if (User.isLoggedIn()) {
-
+        function _populateSaved() {
             Saved.getItems(0).then(function(items) {
 
                 $scope.saved = items;
                 $scope.currentItemIndex = 0;
                 $scope.currentItem = $scope.saved[$scope.currentItemIndex];
             })
+        }
+
+        if (User.isLoggedIn()) {
+            _populateSaved()
 
         } else {
 
-            $rootScope.$on('login', function() {
-
-                Saved.getItems(0).then(function(items) {
-
-                    $scope.saved = items;
-                    $scope.currentItemIndex = 0;
-                    $scope.currentItem = $scope.saved[$scope.currentItemIndex];
-                })
+            User.softLogin().then(function() {
+                _populateSaved()
             })
-
         }
 
         $scope.changeCurrentItem = function(index) {
@@ -121,15 +114,15 @@ controller('SavedViewCtrl', ['$scope', '$rootScope', 'Saved', 'User',
             $scope.currentItem = $scope.saved[index];
         }
 
-        $scope.deleteSavedItem = function (item, index) {
-            Saved.deleteItem(item).then(function () {
-                $scope.saved.splice(index,1);
+        $scope.deleteSavedItem = function(item, index) {
+            Saved.deleteItem(item).then(function() {
+                $scope.saved.splice(index, 1);
             })
         };
 
-        $scope.loadMoreItems = function () {
+        $scope.loadMoreItems = function() {
 
-            if ($scope.saved.busy === true){
+            if ($scope.saved.busy === true) {
                 return
             }
 
@@ -157,26 +150,23 @@ controller('SentViewCtrl', ['$scope', '$rootScope', 'Sent', 'User',
         $scope.sent.busy = false
         $scope.sent.page = 0
 
-
-        if (User.isLoggedIn()) {
-
+        function _populateSent() {
             Sent.getItems(0).then(function(items) {
 
                 $scope.sent = items;
                 $scope.currentItemIndex = 0;
                 $scope.currentItem = $scope.sent[$scope.currentItemIndex];
             })
+        }
+
+
+        if (User.isLoggedIn()) {
+            _populateSent()
 
         } else {
 
-            $rootScope.$on('login', function() {
-
-                Sent.getItems(0).then(function(items) {
-
-                    $scope.sent = items;
-                    $scope.currentItemIndex = 0;
-                    $scope.currentItem = $scope.sent[$scope.currentItemIndex];
-                })
+            User.softLogin().then(function() {
+                _populateSent()
             })
 
         }
@@ -186,9 +176,9 @@ controller('SentViewCtrl', ['$scope', '$rootScope', 'Sent', 'User',
             $scope.currentItem = $scope.sent[index];
         }
 
-        $scope.loadMoreItems = function () {
+        $scope.loadMoreItems = function() {
 
-            if ($scope.sent.busy === true){
+            if ($scope.sent.busy === true) {
                 return
             }
 

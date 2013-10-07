@@ -3,15 +3,9 @@
 <wrapper ng-controller="SavedViewCtrl">
     <div id="listView" >
 
-        <ng-include src="'partials/overlay.html'" > </ng-include>
+    <ng-include src="'partials/listViewHeader.html'" > </ng-include>
 
-        <div class="listItem" >
-            <a href="#/queue">Queue</a>
-            <a href="#/saved">Saved</a>
-            <a href="#/sent">Sent</a>
-        </div>
-
-        <div class="listItem" ng-repeat="item in saved"
+        <div class="listItem" ng-repeat="item in saved | filter:query"
                               ng-click="changeCurrentItem($index)"
                               ng-class="($index==currentItemIndex) ? 'selected' : ''">
 

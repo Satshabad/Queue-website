@@ -1,17 +1,12 @@
 <!-- (C) Copyright 2013 - Queue -->
 <!-- Queue Partial -->
 <wrapper ng-controller="SentViewCtrl">
-    <div id="listView" >
+<div id="listView" >
 
-        <ng-include src="'partials/overlay.html'" > </ng-include>
 
-        <div class="listItem" >
-            <a href="#/queue">Queue</a>
-            <a href="#/saved">Saved</a>
-            <a href="#/sent">Sent</a>
-        </div>
+    <ng-include src="'partials/listViewHeader.html'" > </ng-include>
 
-        <div class="listItem" ng-repeat="item in sent"
+        <div class="listItem" ng-repeat="item in sent | filter:query"
                               ng-click="changeCurrentItem($index)"
                               ng-class="($index==currentItemIndex) ? 'selected' : ''">
 
