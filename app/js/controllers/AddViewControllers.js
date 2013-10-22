@@ -6,8 +6,8 @@ controller('ModalAddViewCtrl', ['$scope',
 ])
 
 angular.module('queueapp').
-controller('PickerViewCtrl', ['$scope', 'Search', 'Listens', 'Facebook',
-    function($scope, Search, Listens, Facebook) {
+controller('PickerViewCtrl', ['$scope', 'Search', 'Listens', 'Facebook', 'User',
+    function($scope, Search, Listens, Facebook, User) {
 
         $scope.mode = 'listens' // or 'search'
 
@@ -38,11 +38,6 @@ controller('PickerViewCtrl', ['$scope', 'Search', 'Listens', 'Facebook',
 
         }
 
-        Listens.getTracks().then(function(tracks) {
-            $scope.listens = tracks;
-            $scope.cachedListens = tracks;
-        })
-
         $scope.doSearch = function() {
 
             if ($scope.searchResults.busy === true) {
@@ -59,6 +54,26 @@ controller('PickerViewCtrl', ['$scope', 'Search', 'Listens', 'Facebook',
             })
 
         };
+
+        function _populateRecentListens() {
+
+            Listens.getTracks().then(function(tracks) {
+                $scope.listens = tracks;
+                $scope.cachedListens = tracks;
+            })
+
+        }
+
+        if (User.isLoggedIn()) {
+            _populateRecentListens()
+
+        } else {
+
+            User.softLogin().then(function() {
+                _populateRecentListens()
+            })
+
+        }
 
     }
 ])
