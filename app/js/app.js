@@ -3,7 +3,11 @@
 
 var app = angular.module('queueapp', ['ngResource', 'ngRoute', 'ui.bootstrap.modal', 'localytics.directives'])
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $httpProvider) {
+
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
     $routeProvider.when('/queue', {
         templateUrl: 'partials/queue.html',
     }).when('/saved', {

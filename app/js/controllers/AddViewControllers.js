@@ -40,6 +40,12 @@ controller('PickerViewCtrl', ['$scope', 'Search', 'Listens', 'Facebook', 'User',
 
         $scope.doSearch = function() {
 
+            console.log($scope.searchTerm == "");
+            if ($scope.searchTerm == ""){
+                $scope.cachedSearchResults = [];
+                return
+            }
+
             if ($scope.searchResults.busy === true) {
                 return
             }
