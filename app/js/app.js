@@ -21,7 +21,8 @@ app.config(function($routeProvider, $httpProvider) {
 
 app.run(function($rootScope, Facebook, User) {
 
-    $rootScope.config = { "hostname": "localhost:8000"}
+    $rootScope.config = {"hostname" :  "queuemusic.me"
+                        'appId'     :  '580401268636769'}
 
     $rootScope.safeApply = function(fn) {
         var phase = this.$root.$$phase;

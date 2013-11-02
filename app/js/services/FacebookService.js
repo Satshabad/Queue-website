@@ -13,7 +13,7 @@ factory('Facebook', function($q, $rootScope) {
         var deferred = $q.defer();
         window.fbAsyncInit = function() {
             FB.init({
-                appId: '580401268636769',
+                appId: $rootScope.config['appId'],
                 status: true,
                 cookie: true,
                 xfbml: true
