@@ -50,7 +50,7 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
             "imageLink"   :  user.picture
         };
 
-        return $http.post('http://localhost:8000/login', postParams)
+        return $http.post('http://'+$rootScope.config['hostname']+'/login', postParams)
 
     }
 
@@ -87,7 +87,7 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
 
     function setLastFMName(name) {
         user.lastFMUsername = name
-        return $http.put('http://localhost:8000/user/' + user.id.toString(), user)
+        return $http.put('http://'+$rootScope.config['hostname']+'/user/' + user.id.toString(), user)
     }
 
     // The external API. Only functions so that we

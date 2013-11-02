@@ -16,7 +16,7 @@ factory('Sharing', function($http, User) {
 
         item.fromUser = user;
         _massageItem(item)
-        return $http.post('http://localhost:8000/fbuser/'+ fbId.toString() +'/queue', item)
+        return $http.post('http://'+$rootScope.config['hostname']+'/fbuser/'+ fbId.toString() +'/queue', item)
 
     }
 

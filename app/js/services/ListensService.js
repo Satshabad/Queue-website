@@ -3,7 +3,7 @@
 angular.module('queueapp').
 factory('Listens', function($resource, User) {
 
-    var Queue = $resource('http://localhost:8000/user/:userId/listens', {
+    var Queue = $resource('http://'+$rootScope.config['hostname']+'/user/:userId/listens', {
         userId: getUserId
     }, {
         tracks: {

@@ -3,7 +3,7 @@
 angular.module('queueapp').
 factory('Search', function($resource) {
 
-    var Queue = $resource('http://localhost:8000/search/:query', {}, {
+    var Queue = $resource('http://'+$rootScope.config['hostname']+'/search/:query', {}, {
         artists: {
             isArray: true,
             method: 'get',
