@@ -49,6 +49,7 @@ body {
   height: 34px;
   padding: 14px 12px 0px 14px;
   border-left: 1px solid #3b3b3c;
+  cursor: pointer;
 }
 
 #topNav #navContent {
@@ -61,6 +62,9 @@ body {
 
 #topNav #navContent #addButton {
   float: left;
+  margin-top: 7px;
+  margin-left: 7px;
+  cursor: pointer;
 }
 
 #topNav #navContent #searchForm {
@@ -322,5 +326,10 @@ body {
   width: 50%;
 }
 
+
 #shareView {
+}
+
+#shareView #friendPicker {
+  width: 360px;
 }
