@@ -66,8 +66,6 @@ factory('User', function(Facebook, $q, $http, $resource, config, $rootScope) {
 
                 return $q.all([tryToGetMe, tryToGetPic])
 
-            } else {
-                throw "couldn't log in"
             }
         }).then(_loginOnServer).
         then(_processLoginResp).
