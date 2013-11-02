@@ -3,10 +3,8 @@
 
 var app = angular.module('queueapp', ['ngResource', 'ngRoute', 'ui.bootstrap.modal', 'localytics.directives'])
 
-app.config(function($routeProvider, $httpProvider) {
-
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+app.config(function($routeProvider, $httpProvider, $compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|spotify):/);
 
     $routeProvider.when('/queue', {
         templateUrl: 'partials/queue.html',
