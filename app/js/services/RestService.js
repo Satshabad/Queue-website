@@ -2,10 +2,10 @@
 
 
 angular.module('queueapp').
-factory('ResourceFactory', function($resource, User, $rootScope) {
+factory('ResourceFactory', function($resource, User, config) {
 
     function initResource(name) {
-        return $resource('http://'+$rootScope.config['hostname']+'/user/:userId/'+name+'/:itemId', {
+        return $resource('http://'+config['hostname']+'/user/:userId/'+name+'/:itemId', {
             itemId: '@itemId',
             userId: _findUserId
         }, {

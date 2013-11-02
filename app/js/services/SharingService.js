@@ -1,5 +1,5 @@
 angular.module('queueapp').
-factory('Sharing', function($http, User, $rootScope) {
+factory('Sharing', function($http, User, config) {
 
     function _massageUser(user) {
         user.userID = user.id
@@ -16,7 +16,7 @@ factory('Sharing', function($http, User, $rootScope) {
 
         item.fromUser = user;
         _massageItem(item)
-        return $http.post('http://'+$rootScope.config['hostname']+'/fbuser/'+ fbId.toString() +'/queue', item)
+        return $http.post('http://'+config['hostname']+'/fbuser/'+ fbId.toString() +'/queue', item)
 
     }
 

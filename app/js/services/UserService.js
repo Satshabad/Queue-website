@@ -5,7 +5,7 @@
 angular.module('queueapp').
 
 // The service for all user interactions
-factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
+factory('User', function(Facebook, $q, $http, $resource, config, $rootScope) {
     var user = {};
     var isLoggedBool = false;
 
@@ -50,7 +50,7 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
             "imageLink"   :  user.picture
         };
 
-        return $http.post('http://'+$rootScope.config['hostname']+'/login', postParams)
+        return $http.post('http://'+config['hostname']+'/login', postParams)
 
     }
 
@@ -87,7 +87,7 @@ factory('User', function(Facebook, $q, $http, $rootScope, $resource) {
 
     function setLastFMName(name) {
         user.lastFMUsername = name
-        return $http.put('http://'+$rootScope.config['hostname']+'/user/' + user.id.toString(), user)
+        return $http.put('http://'+config['hostname']+'/user/' + user.id.toString(), user)
     }
 
     // The external API. Only functions so that we
