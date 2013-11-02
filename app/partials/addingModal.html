@@ -23,16 +23,13 @@
 	</div>
 
     <div id="shareView" ng-controller="ShareViewCtrl">
-        <h3> Sharing </h3>
+        <h3>Sharing</h3>
         {{$parent.selectedItem.song.name}}
-        <h3> With </h3>
+        <h3>With</h3>
 
-        <select chosen multiple id="states"
-            ng-model="selectedFriends"
-            ng-options="f.name for f in friends">
-        </select>
+        <select chosen multiple id="friendPicker" ng-model="selectedFriends" ng-options="f.name for f in friends" allow-single-deselect="true" data-placeholder="Search for Friends" no-results-text="'Oops, you don\'t have any friends named'"/>
 
-        <button ng-click="submit()"> Go </button>
+        <div ng-click="submit()">Go</div>
 
     </div>
 </div>
