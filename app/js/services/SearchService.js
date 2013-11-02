@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('queueapp').
-factory('Search', function($resource, $rootScope) {
+factory('Search', function($resource, config) {
 
-    var Queue = $resource('http://'+$rootScope.config['hostname']+'/search/:query', {}, {
+    var Queue = $resource('http://'+config['hostname']+'/search/:query', {}, {
         artists: {
             isArray: true,
             method: 'get',

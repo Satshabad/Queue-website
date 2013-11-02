@@ -2,7 +2,7 @@
 
 // The Facebook service. It's a thin wrapper on the FBAPI library
 angular.module('queueapp').
-factory('Facebook', function($q, $rootScope) {
+factory('Facebook', function($q, $rootScope, config) {
     var FBAPI;
 
     function init(facebookLibrary) {
@@ -13,7 +13,7 @@ factory('Facebook', function($q, $rootScope) {
         var deferred = $q.defer();
         window.fbAsyncInit = function() {
             FB.init({
-                appId: $rootScope.config['appId'],
+                appId: config['appId'],
                 status: true,
                 cookie: true,
                 xfbml: true
