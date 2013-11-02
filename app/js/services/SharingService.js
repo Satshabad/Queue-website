@@ -20,8 +20,20 @@ factory('Sharing', function($http, User, config) {
 
     }
 
+    function addToOwnQueue(item) {
+
+        var user = User.getUser()
+        _massageUser(user)
+
+        item.fromUser = user;
+        _massageItem(item)
+        return $http.post('http://'+config['hostname']+'/user/'+ user.userID.toString() +'/queue', item)
+
+    }
+
     return {
-        "shareByFbId" : shareByFbId
+        "shareByFbId"   :  shareByFbId,
+        "addToOwnQueue" :  addToOwnQueue
     }
 })
 

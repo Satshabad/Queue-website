@@ -87,7 +87,7 @@ controller('PickerViewCtrl', ['$scope', 'Search', 'Listens', 'Facebook', 'User',
 
 angular.module('queueapp').
 controller('ShareViewCtrl', ['$scope', 'Facebook', 'Sharing', '$q',
-    function($scope, Facebook, Sharing, $q) {
+    function($scope, Facebook, Sharing, $q, $sce) {
 
         $scope.friends = [];
         $scope.selectedFriends = [];
@@ -107,5 +107,12 @@ controller('ShareViewCtrl', ['$scope', 'Facebook', 'Sharing', '$q',
             })
 
         };
+
+        $scope.submitToOwnQueue = function () {
+            Sharing.addToOwnQueue($scope.$parent.selectedItem).then(function () {
+                $scope.$emit('successShare')
+            });
+        }
+
     }
 ])
