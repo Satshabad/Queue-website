@@ -1,8 +1,13 @@
 'use strict';
 
 angular.module('queueapp').
-controller('ListViewCtrl', ['$scope',
-    function($scope) {
+controller('ListViewCtrl', ['$scope', '$sce',
+    function($scope, $sce) {
+
+        $scope.trustSrc = function(src) {
+            return $sce.trustAsResourceUrl(src);
+        }
+
         $scope.changeFilter = function (input) {
             $scope.query = input;
         };
