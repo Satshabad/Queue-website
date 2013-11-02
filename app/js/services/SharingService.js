@@ -1,5 +1,5 @@
 angular.module('queueapp').
-factory('Sharing', function($http, User) {
+factory('Sharing', function($http, User, $rootScope) {
 
     function _massageUser(user) {
         user.userID = user.id
