@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('queueapp').
-factory('Listens', function($resource, User) {
+factory('Listens', function($resource, User, $rootScope) {
 
     var Queue = $resource('http://'+$rootScope.config['hostname']+'/user/:userId/listens', {
         userId: getUserId
