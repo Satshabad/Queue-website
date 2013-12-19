@@ -1,7 +1,7 @@
 'use strict';
 
 
-var app = angular.module('queueapp', ['ngResource', 'ngRoute', 'ui.bootstrap.modal', 'localytics.directives'])
+var app = angular.module('queueapp', ['ngResource', 'ngRoute'])
 
 app.config(function($routeProvider, $httpProvider, $compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|spotify):/);
