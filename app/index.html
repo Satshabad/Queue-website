@@ -38,7 +38,7 @@
 
       <li ng-repeat="item in queue | filter:query" >
         <div class="picture-container">
-          <img ng-src="{{item.song.images.extraLarge || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}"  />
+          <img ng-src="{{item.song.images.extraLarge || item.song.artist.images.extraLarge || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}"  />
           <img class="sent-by-pic" ng-src="{{item.fromUser.image}}" title="From {{item.fromUser.fullName}}"/>
         </div>
         <div class="small-12 columns">
@@ -54,7 +54,7 @@
 
       <li ng-repeat="item in saved | filter:query" >
         <div class="picture-container">
-          <img ng-src="{{item.song.images.extraLarge || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}"  />
+          <img ng-src="{{item.song.images.extraLarge  || item.song.artist.images.extraLarge || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}"  />
           <img class="sent-by-pic" ng-src="{{item.fromUser.image}}" title="From {{item.fromUser.fullName}}"/>
         </div>
         <div class="small-12 columns">
@@ -69,7 +69,7 @@
 
       <li ng-repeat="item in sent | filter:query" >
         <div class="picture-container">
-          <img ng-src="{{item.song.images.extraLarge || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}"  />
+          <img ng-src="{{item.song.images.extraLarge  || item.song.artist.images.extraLarge || 'http://userserve-ak.last.fm/serve/174s/86640949.png'}}"  />
           <img class="sent-by-pic" ng-src="{{item.fromUser.image}}" title="Sent to {{item.fromUser.fullName}}"/>
         </div>
         <div class="small-12 columns">
