@@ -14,6 +14,7 @@ factory('Facebook', function($q, $rootScope, config) {
         window.fbAsyncInit = function() {
             FB.init({
                 appId: config['appId'],
+                channelUrl : '//'+ config['hostname']+'/channel.html',
                 status: true,
                 cookie: true,
                 xfbml: true

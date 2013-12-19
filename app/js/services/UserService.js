@@ -11,7 +11,6 @@ factory('User', function(Facebook, $q, $http, $resource, config, $rootScope) {
 
     function login() {
         return Facebook.login().then(function(loginStatus) {
-
             user.accessToken = loginStatus.accessToken;
             user.facebookID = loginStatus.userID
 
@@ -23,7 +22,6 @@ factory('User', function(Facebook, $q, $http, $resource, config, $rootScope) {
         }).then(_loginOnServer).
         then(_processLoginResp).
         catch (function(reason) {
-            console.log("there was an error!");
             throw reason;
         })
 
@@ -66,6 +64,8 @@ factory('User', function(Facebook, $q, $http, $resource, config, $rootScope) {
 
                 return $q.all([tryToGetMe, tryToGetPic])
 
+            } else {
+                throw "not connected yet"
             }
         }).then(_loginOnServer).
         then(_processLoginResp).
