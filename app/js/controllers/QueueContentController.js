@@ -10,10 +10,18 @@ controller('QueueContentCtrl',  ['$scope', '$sce', '$rootScope', 'Queue', 'User'
             $scope.query = input;
         };
 
+        $scope.isLoggedin = false;
         $scope.queue = [];
         $scope.saved = [];
         $scope.sent = [];
         $scope.displayMode = "queue";
+
+        $scope.login = function() {
+            User.login().then(function () {
+                $scope.isLoggedin = true;
+                _populateQueue();
+            })
+        }
 
         $scope.changeMode = function (mode) {
            $scope.displayMode = mode;
@@ -59,9 +67,11 @@ controller('QueueContentCtrl',  ['$scope', '$sce', '$rootScope', 'Queue', 'User'
 
         if (User.isLoggedIn()) {
             _populateQueue()
+            $scope.isLoggedin = true;
         } else {
             User.softLogin().then(function() {
                 _populateQueue()
+                $scope.isLoggedin = true;
             })
         }
 

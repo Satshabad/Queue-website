@@ -27,6 +27,11 @@
   </div>
 </div>
 
+<div ng-show="!isLoggedin" class="row">
+    <img id="loginButton" src="img/fb-loginbutton.png"
+    ng-click="login()" />
+</div>
+
 <div class="row">
   <div class="small-12 columns">
     <ul class="small-block-grid-3 large-block-grid-6">
