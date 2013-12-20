@@ -1,3 +1,38 @@
+/* Foundation Style Overrides */
+/* -------------------------- */
+
+/* Site-wide Styles */
+/* ---------------- */
+
+#top-bar .top-bar {
+	overflow: hidden;
+}
+
+#top-bar .top-bar,
+#top-bar .top-bar-section ul,
+#top-bar .top-bar-section li a:not(.button) {
+	background: #ffffff;
+}
+
+#top-bar .sub-nav dt.active a,
+#top-bar .sub-nav dd.active a,
+#top-bar .sub-nav li.active a {
+	background: #008cba;
+}
+
+#top-bar .sub-nav {
+	margin-bottom: 0;
+	padding-left: 1em;
+}
+
+
+/* Page Specific Styles */
+/* -------------------- */
+
+.queue-item {
+	cursor: pointer;
+}
+
 .picture-container {
 	border: 1px solid #e9e9e9;
 }
@@ -10,7 +45,9 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	height: 25%;
-	border-top: 3px solid #ffffff;
-	border-right: 3px solid #ffffff;
+	width: 25%;
+	border-top: 2px solid #ffffff;
+	border-right: 2px solid #ffffff;
 }
+
+

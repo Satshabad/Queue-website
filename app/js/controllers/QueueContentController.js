@@ -2,6 +2,7 @@ angular.module('queueapp').
 controller('QueueContentCtrl',  ['$scope', '$sce', '$rootScope', 'Queue', 'User', 'Saved', 'Sent',
     function($scope, $sce, $rootScope, Queue, User, Saved, Sent) {
 
+
         $scope.trustSrc = function(src) {
             return $sce.trustAsResourceUrl(src);
         }
@@ -10,6 +11,19 @@ controller('QueueContentCtrl',  ['$scope', '$sce', '$rootScope', 'Queue', 'User'
             $scope.query = input;
         };
 
+        $scope.changeCurrentItem = function(index) {
+          // TODO queue or saved or sent
+          $scope.currentItem = $scope.queue[index];
+
+        };
+
+        $scope.removeCurrentItem = function() {
+          // TODO queue or saved or sent
+          $scope.currentItem = undefined;
+
+        };
+
+        $scope.currentItem = undefined;
         $scope.isLoggedin = false;
         $scope.queue = [];
         $scope.saved = [];
