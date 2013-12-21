@@ -24,11 +24,31 @@
           <h6 class="subheader"><em>Shared by {{currentItem.fromUser.fullName.split(' ')[0]}}</em></h6>
         </div>
       </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+      <div class="left">
+        <a href="{{currentItem.urls.spotify}}">
+          <img class="listening-icon"  ng-class="{'listening-icon-disabled': currentItem.urls.spotify == undefined}" src="img/spotify-logo-128px.png" /> 
+        </a>
+      </div>
+
+      <div class="left">
+        <a href="{{currentItem.urls.youtube}}">
+          <img class="listening-icon" ng-class="{'listening-icon-disabled': currentItem.urls.youtube == undefined}" src="img/youtube-logo-128px.png" /> 
+        </a>
+      </div>
+
+      <div class="left" >
+        <a href="{{currentItem.urls.grooveshark}}">
+          <img class="listening-icon" ng-class="{'listening-icon-disabled': currentItem.urls.grooveshark == undefined}" src="img/grooveshark-logo-128px.png" /> 
+        </a>
+      </div>
+    </div>
+
+    </div>
+
     </div>
   </div>
-  <div class="row">
-    <div class="small-4 columns"></div>
-    <div class="small-4 columns"></div>
-    <div class="small-4 columns"></div>
-  </div>
+  
 </div>

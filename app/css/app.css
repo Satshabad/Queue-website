@@ -1,7 +1,9 @@
 /* Foundation Style Overrides */
+
 /* -------------------------- */
 
 /* Site-wide Styles */
+
 /* ---------------- */
 
 #top-bar .top-bar {
@@ -24,24 +26,55 @@
 	margin-bottom: 0;
 	padding-left: 1em;
 }
+#top-bar .right {
+	position: relative;
+}
 
+#top-bar .right-nav-button:before,
+#top-bar .left-nav-button:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 
-/* Page Specific Styles */
-/* -------------------- */
+#top-bar .right-nav-button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px 20px 5px 50px;
+	color: white;
+	background: #ff803c;
+	cursor: pointer;
+}
+
+#top-bar .right-nav-button:hover {
+	background: #ff6f23;
+}
+
+#top-bar .right-nav-button:before {
+	height: 35px;
+	width: 35px;
+	margin-top: 10px;
+	border-width: 17.5px;
+	border-style: solid;
+	border-color: transparent;
+	border-left-color: #ffffff;
+	background: transparent;
+}
 
 .queue-item {
 	cursor: pointer;
 }
 
-.picture-container {
+.queue-item .picture-container {
 	border: 1px solid #e9e9e9;
 }
 
-.picture-container {
+.queue-item .picture-container {
 	position: relative;
 }
 
-.picture-container .sent-by-pic {
+.queue-item .picture-container .sent-by-pic {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -50,4 +83,13 @@
 	border-right: 2px solid #ffffff;
 }
 
+.listening-icon {
+	height: 50px;
+	width: 50px;
+	margin-top: 30px;
+	margin-right: 20px;
+}
 
+.listening-icon-disabled {
+	opacity: 0.4;
+}
