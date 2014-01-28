@@ -11,34 +11,40 @@
 </head>
 <body ng-controller="QueueContentCtrl">
 
-  <div id="top-bar" class="fixed">
-    <nav class="top-bar" data-topbar>
+<div class="contain-to-grid">
+    <div id="top-bar" class="fixed">
+        <nav class="top-bar" data-topbar>
 
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <div class="right-nav-button">Save or Share</div>
-        </ul>
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                    <div class="right-nav-button">Save or Share</div>
+                </ul>
 
-        <!-- Left Nav Section -->
-        <ul class="left">
-          <li>
-            <dl class="sub-nav">
-              <dd ng-class="{active: displayMode=='queue'}">
-                <a href="#" ng-click="changeMode('queue')">Queue</a>
-              </dd>
-              <dd ng-class="{active: displayMode=='saved'}">
-                <a href="#" ng-click="changeMode('saved')">Saved</a>
-              </dd>
-              <dd ng-class="{active: displayMode=='sent'}">
-                <a href="#" ng-click="changeMode('sent')" >Sent</a>
-              </dd>
-            </dl>
-          </li>
-        </ul>
-      </section>
-    </nav>
-  </div>
+                <!-- Left Nav Section -->
+                <ul class="left">
+                    <li>
+                    <dl class="sub-nav">
+                        <dd ng-class="{active: displayMode=='queue'}">
+                        <a href="#" ng-click="changeMode('queue')">Queue</a>
+                        </dd>
+                        <dd ng-class="{active: displayMode=='saved'}">
+                        <a href="#" ng-click="changeMode('saved')">Saved</a>
+                        </dd>
+                        <dd ng-class="{active: displayMode=='sent'}">
+                        <a href="#" ng-click="changeMode('sent')" >Sent</a>
+                        </dd>
+                    </dl>
+                    </li>
+                </ul>
+
+                <div class="large-3 small-3 columns left">
+                    <input ng-model="query" type="text" placeholder="Filter your items">
+                </div>
+            </section>
+        </nav>
+    </div>
+</div>
 
   <div ng-show="!isLoggedin" class="row">
     <img id="loginButton" src="img/fb-loginbutton.png"

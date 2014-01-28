@@ -6,8 +6,17 @@
 
 /* ---------------- */
 
+.contain-to-grid {
+    position: fixed;
+    z-index: 99;
+    -moz-box-shadow:    0px 1px 0px 1px #ccc;
+    -webkit-box-shadow: 0px 1px 0px 1px #ccc;
+    box-shadow:         0px 1px 0px 1px #ccc;
+}
+
 #top-bar .top-bar {
 	overflow: hidden;
+    height: 55px;
 }
 
 #top-bar .top-bar,
