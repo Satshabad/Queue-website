@@ -7,7 +7,7 @@ if (window.location.hostname == "queuemusic.me"){
 } else {
 
   angular.module('queueapp').constant('config', {
-        "hostname": "192.168.1.26:8000",
+        "hostname": "192.168.1.14:8000",
         "appId":   '1380227372202033'
     });
 }

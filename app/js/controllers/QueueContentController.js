@@ -2,6 +2,11 @@ angular.module('queueapp').
 controller('QueueContentCtrl',  ['$scope', '$sce', '$rootScope', 'Queue', 'User', 'Saved', 'Sent',
     function($scope, $sce, $rootScope, Queue, User, Saved, Sent) {
 
+        $scope.visible = false;
+        $scope.openModal = function(item) {
+            $scope.visible = true;
+            $scope.currentItem = item;
+        }
 
         $scope.trustSrc = function(src) {
             return $sce.trustAsResourceUrl(src);

@@ -93,3 +93,18 @@
 .listening-icon-disabled {
 	opacity: 0.4;
 }
+
+// need these for modal
+.reveal-animation {
+  display:none;
+}
+
+.reveal-animation .reveal-modal {
+  display: block;
+  visibility: visible;
+  position: fixed;
+}
+
+.reveal-animation .reveal-modal-bg {
+  display: block;
+}
